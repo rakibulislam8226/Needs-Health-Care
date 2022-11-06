@@ -33,4 +33,5 @@ urlpatterns = [
     path('departments/', departments,name='departments'),
     path('services/', services, name='services'),
     path('doctor/', doctor, name='doctor'),
+    path('ambulance/', ambulance, name='ambulance'),
 ]
