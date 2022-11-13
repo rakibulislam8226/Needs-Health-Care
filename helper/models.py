@@ -21,8 +21,8 @@ class CreateQuery(models.Model):
   name=models.CharField(max_length=50)
   phone=models.CharField(max_length=50)
   email=models.EmailField(max_length=50)
-  created_at=models.DateTimeField(auto_now_add=True,null=True,blank=True)
-  updated_at=models.DateTimeField(auto_now=True,null=True,blank=True)
+  created_at=models.DateTimeField(auto_now_add=True)
+  updated_at=models.DateTimeField(auto_now=True)
   department=models.CharField(max_length=21, choices=DEPARTMENT)
   describe=models.TextField()
   def __str__(self):
