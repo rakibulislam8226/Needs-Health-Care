@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . models import Get_touch,CreateQuery
+from . forms import CreateQueryForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -27,6 +29,21 @@ def home(request):
     # context={
     # }
     return render(request, 'base/index.html')
+
+
+def appointment(request):
+    if request.method=="POST":
+        form = CreateQueryForm(request.POST)
+        if form.is_valid():
+            obj=form.save(commit=False)
+            obj.user=request.user
+            obj.save()
+            messages.success(request,'Query created Successfully.')
+            return redirect('/')
+    else:
+        form=CreateQueryForm()
+
+    return render(request, 'query.html',{'form':form})
 
 
 def shop(request):
