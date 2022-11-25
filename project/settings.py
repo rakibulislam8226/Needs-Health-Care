@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'helper',
     'accounts',
+    'find_doctors',
     'rest_framework',
     'drf_yasg',
     'crispy_forms',

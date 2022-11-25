@@ -3,7 +3,9 @@
 *.pot
 *.pyc
 __pycache__
-media
+migrations
+
+
 
 # If you are using PyCharm # 
 # User-specific stuff
@@ -15,5 +17,6 @@ media
 
 
 # Environments 
+xxx
 .env 
 .venv 
