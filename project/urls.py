@@ -42,3 +42,8 @@ urlpatterns = [
     path('ambulance/', ambulance, name='ambulance'),
     path('appointment/', appointment, name='appointment'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.site_header  =  "Needs Healthcare admin"  
+admin.site.site_title  =  "Needs Healthcare admin site"
+admin.site.index_title  =  "Needs Healthcare Admin"

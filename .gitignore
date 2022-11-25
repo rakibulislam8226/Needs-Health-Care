@@ -18,5 +18,7 @@ migrations
 
 # Environments 
 xxx
+venv
+env
 .env 
 .venv 

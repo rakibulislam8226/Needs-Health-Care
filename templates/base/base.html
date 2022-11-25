@@ -28,9 +28,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Querys</a>
         </li>
@@ -50,6 +47,8 @@
       <button class="btn btn-danger"><a href="#" style="color: #FFFFFF">Ambulance</a> </button>&nbsp;
       <button class="btn btn-danger"><a href="#" style="color: #FFFFFF">Emergency</a> </button>&nbsp;
       <button class="btn btn-success"><a href="{% url 'appointment' %}" style="color: #ececec">Get Appointment</a> </button>&nbsp;
+      <button class="btn btn-success"><a href="/find-doctor/patient/add/" style="color: #ececec">Find Doctors</a> </button>&nbsp;
+
 
 
       <ul class="navbar-nav ml-auto">
@@ -96,22 +95,18 @@
 
 
   <footer>
+    <div class="my-5">
     <div class="row m-1">
-      <div class="col-lg-3">
+      <div class="col-lg-4">
         <div class="card">
           <h3 style="text-align: center;"><b> About us</b></h3>
           <hr>
-
         </div>
-
       </div>
-      <div class="col-lg-3">
-        <h3 style="text-align: center;"><b> location</b></h3>
-      </div>
-      <div class="col-lg-3">
+      <div class="col-lg-4">
         <h3 style="text-align: center;"><b> Latest post</b></h3>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-4">
         <h3 style="text-align: center;"><b> Quick links</b></h3>
       </div>
     </div>
@@ -120,6 +115,7 @@
         <h3 style="text-align: center;" class="bg-dark"><b> Template licence</b></h3>
       </div>
     </div>
+  </div>
   </footer>
 
   <!-- Optional JavaScript -->

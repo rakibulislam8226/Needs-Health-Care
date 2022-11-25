@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from django.contrib import messages
 
-# Create your views here.
+
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import PatientForm
 from .models import Patients, Doctor
 
+
+# Create your views here.
 
 def create_view(request):
   form = PatientForm()
@@ -13,7 +16,8 @@ def create_view(request):
     form = PatientForm(request.POST)
     if form.is_valid():
       form.save()
-      return redirect('add')
+      messages.success(request, 'Create successfully.')
+      return redirect('/')
   return render(request, 'find_doctors/home.html', {'form': form})
 
 

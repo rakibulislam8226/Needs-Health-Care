@@ -1,8 +1,11 @@
 from django.contrib import admin
 from . models import Get_touch,CreateQuery
+from  django.contrib.auth.models  import  Group
+
 
 
 #custom Admin site start #
+admin.site.unregister(Group)
 class Get_touchAdmin(admin.ModelAdmin):
   readonly_fields = ('name','email',)
   list_display = ('name', 'email', 'subject')
