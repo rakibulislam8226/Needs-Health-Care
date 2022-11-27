@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'helper',
     'accounts',
     'find_doctors',
+    'querys',
     'rest_framework',
     'drf_yasg',
     'crispy_forms',

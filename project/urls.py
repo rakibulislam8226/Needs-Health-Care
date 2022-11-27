@@ -29,6 +29,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('accounts/', include('accounts.urls')),
     path('find-doctor/', include('find_doctors.urls')),
+    path('query/', include('querys.urls')),
     
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 

@@ -7,7 +7,7 @@
   <form method="post" id="PatientForm" data-doctors-url="{% url 'ajax_load_doctors' %}" class="form-horizontal" role="form">
     {% csrf_token %}
     {{ form | crispy }}
-    <button type="submit" class="btn btn-info">Save</button>
+    <button type="submit" class="btn btn-info">Search</button>
     <!-- <input type="submit" value="Submit" class="btn btn-info"> -->
   </div>
 </div>

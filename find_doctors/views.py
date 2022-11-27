@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
+from rest_framework.decorators import api_view
 
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -9,7 +10,7 @@ from .models import Patients, Doctor
 
 
 # Create your views here.
-
+# @api_view(['POST',])
 def create_view(request):
   form = PatientForm()
   if request.method == 'POST':
