@@ -32,7 +32,7 @@
           <a class="nav-link" href="#">Create Querys</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Querys</a>
+          <a class="nav-link" href="{% url 'posts' %}">Querys</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -62,11 +62,11 @@
             {{user.username}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'userprofile' %}">Profile</a>
-            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            <a class="dropdown-item" href="#">Profile</a>
+            <a class="dropdown-item" href="{% url 'logout_view' %}">Logout</a>
           </div>
           {% else %}
-        <li class="nav-item"><a style="color: #FFFFFF" href="{% url 'register' %}"><button
+        <li class="nav-item"><a style="color: #FFFFFF" href="{% url 'patient_signup' %}"><button
               class="btn btn-success">Register</button> </a></li>&nbsp;
         <li class="nav-item"><a style="color: #FFFFFF" href="{% url 'login' %}"><button
               class="btn btn-success">Login</button> </a></li>&nbsp;
@@ -106,10 +106,18 @@
         </div>
       </div>
       <div class="col-lg-4">
-        <h3 style="text-align: center;"><b> Latest post</b></h3>
+        <div class="card">
+          <h3 style="text-align: center;"><b> Latest post</b></h3>
+        </div>
       </div>
       <div class="col-lg-4">
-        <h3 style="text-align: center;"><b> Quick links</b></h3>
+        <div class="card">
+          <h3 style="text-align: center;"><b> Quick links</b></h3>
+          <div class="card">
+            <a href="{% url 'doctor_signup' %}">Doctor Signup</a>
+          </div>
+          
+        </div>
       </div>
     </div>
     <div class="">

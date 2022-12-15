@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %} 
+{% load crispy_forms_tags %} 
+
+{% block body %}
+
+    <div class="container">
+        <div class="card m-2">
+            <div class="m-2">
+                <h5>Title: {{data.post_title}}</h5>
+                <h3>Problems:</h3>
+                <p>{{data.post}}</p>
+            </div>
+        </div>
+
+        {% if request.user.is_doctor %}
+            <div class="card">
+                <div class="m-2">
+                        <form method="post">
+                        {%csrf_token %}
+                        <h2>Answer Here</h2>
+                        {{form | crispy}}
+                        <input type="submit" class="btn btn-danger" value="Answer" />
+                        </form>
+                </div>
+            </div>
+        {% endif %}
+
+        <hr>
+        <h4 class="text-center">All the answer from doctors.</h4>
+        {%for answer in answers%}
+        <div class="card mt-1">
+            <div class="m-2">
+                <p><strong>{{answer.name}}:</strong> {{answer.answer_text}}</p>
+            </div>
+        </div>
+            
+        {%endfor %} 
+
+    </div>
+{% endblock body %}

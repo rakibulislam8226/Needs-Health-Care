@@ -4,6 +4,11 @@
 *.pyc
 __pycache__
 migrations
+*.pyc
+*~
+*.swp
+accounts/migrations
+helper/migrations
 
 
 

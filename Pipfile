@@ -10,6 +10,7 @@ pillow = "*"
 django-crispy-forms = "*"
 whitenoise = "*"
 drf-yasg = "*"
+mysqlclient = "*"
 
 [dev-packages]
 

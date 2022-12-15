@@ -1,104 +1,81 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm
-from django.contrib.auth import login,logout,authenticate,update_session_auth_hash
+from django.shortcuts import render
+from django.shortcuts import redirect
+from . import models
+from django.views.generic import CreateView
+from .forms import PatientSignUpForm,DoctorSignUpForm
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
-from . forms import SignUpForm, UserProfileForm
-from . models import UserProfile
-from django.contrib.auth.models import User
+
 
 
 # Create your views here.
-def loginuser(request):
-  if request.method=="POST":
-    form=AuthenticationForm(request=request,data=request.POST)
-    if form.is_valid():
-      username=form.cleaned_data.get('username')
-      password = form.cleaned_data.get('password')
-      user=authenticate(username=username,password=password)
-      if user  is not None:
-        login(request,user)
-        messages.success(request, 'Login successfully.')
-        return redirect('home')
-      else:
-        messages.info(request,'Invalid username or password.')
-    else:
-      messages.info(request,'Invalid username or password.')
-  else:
-    form=AuthenticationForm()
-  return render(request,'userprofile/login.html',{'form':form})
+
+def index(request):
+    return render(request,'index.html')
+
+def home(request):
+    doctors = models.Doctor.objects.all()
+    patients = models.Patient.objects.all()
+    context ={
+        'doctors': doctors,
+        'patients': patients,
+    }
+    return render(request,'home.html', context)
 
 
-def logoutuser(request):
-  logout(request)
-  messages.success(request, 'Logout successfully.')
-  return redirect('/')
+class PatientSignUpView(CreateView):
+    model = models.User
+    form_class = PatientSignUpForm
+    template_name = 'userprofile/signup.html'
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'Patient'
+        return super().get_context_data(**kwargs)
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('login')
+    
+    
+class DoctorSignUpView(CreateView):
+    model = models.User
+    form_class = DoctorSignUpForm
+    template_name = 'userprofile/signup.html'
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'Doctor'
+        return super().get_context_data(**kwargs)
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        messages.info(self.request, "Thank you for your signup. Our admin will verify you ASAP. After approve you account will be active.")
+        return redirect('login')
 
 
+def login_request(request):
+	if request.method == "POST":
+		form = AuthenticationForm(request, data=request.POST)
+		if form.is_valid():
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password')
+			user = authenticate(username=username, password=password)
+			if user is not None:
+				login(request, user)
+				messages.info(request, f"You are now logged in as {username}.")
+				return redirect("/")
+			else:
+				messages.error(request,"Invalid username or password.")
+		else:
+			messages.error(request,"Invalid username or password.")
+	form = AuthenticationForm()
+	return render(request=request, template_name="userprofile/login.html", context={"login_form":form})
 
-def register(request):
-  if request.method=="POST":
-    form = SignUpForm(request.POST)
-    if form.is_valid():
-      user=form.save()
-      current_site=get_current_site(request)
-      mail_subject='An account created'
-      messages=render_to_string('userprofile/account.html',{
-        'user':user,
-        'domain':current_site.domain
-      })
-      send_mail=form.cleaned_data.get('email')
-      email=EmailMessage(mail_subject,messages,to=[send_mail])
-      email.send()
-      return redirect('login')
-  else:
-    form = SignUpForm()
-  return render(request,'userprofile/signup.html',{'form':form})
-
-
-def change_password(request):
-  if request.method=="POST":
-    form=PasswordChangeForm(data=request.POST,user=request.user)
-    if form.is_valid():
-      update_session_auth_hash(request,form.user)
-      form.save()
-      messages.success(request, 'User password successfully changed.')
-      return redirect('login')
-  else:
-    form=PasswordChangeForm(user=request.user)
-  return render(request,'userprofile/pass_change.html',{'form':form})
-
-
-
-def userprofilecreate(request):
-  try:
-    instance = UserProfile.objects.get(user=request.user)
-  except UserProfile.DoesNotExist:
-    instance=None
-  if request.method=="POST":
-    if instance:
-      form = UserProfileForm(request.POST,request.FILES,instance=instance)
-    else:
-      form = UserProfileForm(request.POST, request.FILES)
-    if form.is_valid():
-      obj=form.save(commit=False)
-      obj.user=request.user
-      obj.save()
-      messages.success(request,'Profile Edited Successfully.')
-      return redirect('userprofile')
-  else:
-    form=UserProfileForm(instance=instance)
-  return render(request,'userprofile/userprofilecreate.html',{'form':form})
+def logout_view(request):
+    logout(request)
+    return redirect('/')
+    # Redirect to a success page.
 
 
 
-def userprofile(request):
-  user=request.user
-  return render(request,'userprofile/userprofile.html',{'user':user})
-
-
-def otherprofile(request,id):
-  user = User.objects.get(id=id)
-  return render(request,'userprofile/otherprofile.html',{'user':user})

@@ -4,13 +4,19 @@ from django.contrib.auth.views import PasswordResetView,PasswordResetDoneView,Pa
 
 
 urlpatterns = [
-    path('login/', views.loginuser, name='login'),
-    path('logout/', views.logoutuser, name='logout'),
-    path('register/', views.register, name='register'),
-    path('userprofile/', views.userprofile, name='userprofile'),
-    path('otherprofile/<int:id>/', views.otherprofile, name='otherprofile'),
-    path('userprofilecreate/', views.userprofilecreate, name='userprofilecreate'),
-    path('change_password/', views.change_password, name='change_password'),
+    # path('login/', views.loginuser, name='login'),
+    # path('logout/', views.logoutuser, name='logout'),
+    # path('register/', views.register, name='register'),
+    # path('userprofile/', views.userprofile, name='userprofile'),
+    # path('otherprofile/<int:id>/', views.otherprofile, name='otherprofile'),
+    # path('userprofilecreate/', views.userprofilecreate, name='userprofilecreate'),
+    # path('change_password/', views.change_password, name='change_password'),
+    path('register/', views.index,name='register'),
+    path('', views.home,name='index'),
+    path("login/", views.login_request, name="login"),
+    path("logout/", views.logout_view, name="logout_view"),
+    path('patient-signup/', views.PatientSignUpView.as_view(), name='patient_signup'),
+    path('doctor-signup/', views.DoctorSignUpView.as_view(), name='doctor_signup'),
 
 
 
