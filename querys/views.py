@@ -7,6 +7,8 @@ from . import models
 from . import serializers
 from django.http import Http404
 from django.contrib import messages
+from django.views.generic import TemplateView, ListView
+from django.db.models import Q 
 
 # Create your views here.
 def PostListView(request):
@@ -32,8 +34,6 @@ def PostCreateView(request):
         form.save()
         messages.success(request, 'Create successfully.')
         return redirect("posts")
-    
-    
     return render(request,'querys/post.html',{'form':form})
 
  
@@ -61,6 +61,18 @@ def PostDetailView(request,_id):
             'answers':answers,
         }
     return render(request,'querys/detailview.html',context)
+
+
+class SearchResultView(ListView):
+    model = models.Post
+    template_name = 'querys/search_results.html'
+    
+    def get_queryset(self):  # new
+        query = self.request.GET.get("q")
+        object_list = models.Post.objects.filter(
+            Q(post_title__icontains=query) | Q(post__icontains=query)
+        )
+        return object_list
 
 
 # # rest api start #

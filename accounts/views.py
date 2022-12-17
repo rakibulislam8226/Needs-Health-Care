@@ -37,7 +37,8 @@ class PatientSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('login')
+        messages.info(self.request, "Your account created successfully. Thank you for your signup NeedsHealth Care.")
+        return redirect('/')
     
     
 class DoctorSignUpView(CreateView):
@@ -50,8 +51,8 @@ class DoctorSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        messages.info(self.request, "Thank you for your signup. Our admin will verify you ASAP. After approve you account will be active.")
-        return redirect('login')
+        messages.info(self.request, "Thank you for your signup. Your account are active but our admin will verify you ASAP. After approve your profile will be update. Till you are a simple user.")
+        return redirect('/')
 
 
 def login_request(request):

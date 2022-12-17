@@ -93,10 +93,12 @@
           </button>
         </div>
         <hr>
-        <form class="">
-          <input class="form-control" type="search" placeholder="Search your illness." aria-label="Search"> <br>
+
+        <form action = "{% url 'search' %}" method="get" class="">
+          <input name="q" class="form-control" type="text" placeholder="Just input the keyword like Fever, Cough..." aria-label="Search"> <br>
           <button class="btn btn-outline-success btn-block" type="submit">Search</button>
         </form>
+
       </div>
     </div>
   </div>
