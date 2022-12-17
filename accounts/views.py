@@ -18,8 +18,8 @@ def index(request):
     return render(request,'index.html')
 
 def home(request):
-    doctors = models.Doctor.objects.all()
-    patients = models.Patient.objects.all()
+    doctors = models.DoctorSignUp.objects.all()
+    patients = models.PatientSignUp.objects.all()
     context ={
         'doctors': doctors,
         'patients': patients,

@@ -3,13 +3,11 @@
 *.pot
 *.pyc
 __pycache__
-migrations
 Pipfile.lock
 *.pyc
 *~
 *.swp
-accounts/migrations
-helper/migrations
+
 
 
 

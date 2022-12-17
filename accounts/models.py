@@ -9,21 +9,30 @@ class User(AbstractUser):
     
     
     
-class Doctor(models.Model):
+class DoctorSignUp(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     name = models.CharField(max_length=100)
-    age = models.CharField(max_length=100)  
+    age = models.CharField(max_length=100)
+    department = models.CharField(max_length=100)
+    hospital = models.CharField(max_length=110)
+    education = models.CharField(max_length=255)
     
     def __str__(self) -> str:
         return self.user.username 
     
+    class Meta:
+        verbose_name_plural = "Doctors Accounts"
     
-class Patient(models.Model):
+    
+class PatientSignUp(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     name = models.CharField(max_length=100)
     age = models.CharField(max_length=100)
     
     def __str__(self) -> str:
         return self.user.username 
+    
+    class Meta:
+        verbose_name_plural = "Patients Accounts"
     
     

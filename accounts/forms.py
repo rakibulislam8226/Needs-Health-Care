@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
-from .models import Patient, Doctor,User
+from .models import PatientSignUp, DoctorSignUp,User
 
 
 class PatientSignUpForm(UserCreationForm):
@@ -17,7 +17,7 @@ class PatientSignUpForm(UserCreationForm):
         user.save()
         name = self.cleaned_data['name']
         age = self.cleaned_data['age']
-        patients = Patient.objects.create(user=user, name=name, age=age)
+        patients = PatientSignUp.objects.create(user=user, name=name, age=age)
         patients.save()
         return user
     
@@ -38,6 +38,6 @@ class DoctorSignUpForm(UserCreationForm):
         user.save()
         name = self.cleaned_data['name']
         age = self.cleaned_data['age']
-        doctors = Doctor.objects.create(user=user, name=name, age=age)
+        doctors = DoctorSignUp.objects.create(user=user, name=name, age=age)
         doctors.save()
         return user
