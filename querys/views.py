@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from rest_framework import generics
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
-from .forms import SearchForm, AnswerForm
+from .forms import SearchForm, AnswerForm, PostForm
 from . import models
 from . import serializers
 from django.http import Http404
+from django.contrib import messages
 
 # Create your views here.
 def PostListView(request):
@@ -24,6 +25,17 @@ def PostListView(request):
         }
     return render(request,'querys/listview.html',context)
  
+
+def PostCreateView(request):
+    form = PostForm(request.POST)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Create successfully.')
+        return redirect("posts")
+    
+    
+    return render(request,'querys/post.html',{'form':form})
+
  
 def PostDetailView(request,_id):
     try:
@@ -51,33 +63,33 @@ def PostDetailView(request,_id):
     return render(request,'querys/detailview.html',context)
 
 
-# rest api start #
-class QueryList(generics.ListCreateAPIView):
-  queryset = models.Query.objects.all()
-  serializer_class = serializers.QuerySerializer
-  permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+# # rest api start #
+# class QueryList(generics.ListCreateAPIView):
+#   queryset = models.Query.objects.all()
+#   serializer_class = serializers.QuerySerializer
+#   permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-  def perform_create(self, serializer):
-    serializer.save(creator=self.request.user)
+#   def perform_create(self, serializer):
+#     serializer.save(creator=self.request.user)
 
-class QueryDetail(generics.RetrieveUpdateDestroyAPIView):
-  queryset = models.Query.objects.all()
-  serializer_class = serializers.QuerySerializer
-  permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
+# class QueryDetail(generics.RetrieveUpdateDestroyAPIView):
+#   queryset = models.Query.objects.all()
+#   serializer_class = serializers.QuerySerializer
+#   permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
 
 
 
-class AnswerList(generics.ListCreateAPIView):
-  queryset = models.Answer.objects.all()
-  serializer_class = serializers.AnswerSerializer
-  permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+# class AnswerList(generics.ListCreateAPIView):
+#   queryset = models.Answer.objects.all()
+#   serializer_class = serializers.AnswerSerializer
+#   permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-  def perform_create(self, serializer):
-    serializer.save(creator=self.request.user)
+#   def perform_create(self, serializer):
+#     serializer.save(creator=self.request.user)
 
-class AnswerDetail(generics.RetrieveUpdateDestroyAPIView):
-  queryset = models.Answer.objects.all()
-  serializer_class = serializers.AnswerSerializer
-  permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
+# class AnswerDetail(generics.RetrieveUpdateDestroyAPIView):
+#   queryset = models.Answer.objects.all()
+#   serializer_class = serializers.AnswerSerializer
+#   permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
 
 # end rest api #
