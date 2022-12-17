@@ -4,6 +4,7 @@
 *.pyc
 __pycache__
 migrations
+Pipfile.lock
 *.pyc
 *~
 *.swp
