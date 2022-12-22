@@ -1,11 +1,23 @@
 {% extends 'base/base.html' %}
 {% load crispy_forms_tags %}
 
+
+{% block head %}
+<style>
+    .card:hover{
+    background-color:rgb(226, 230, 219);
+    transition: color .5s ease-in-out, box-shadow .5s ease-in-out;
+    box-shadow: inset 120vh 0 0 0 #54b3d6;
+}
+</style>
+    
+{% endblock head %}
+    
+
 {% block body %}
 <div class="container">
     {% for data in dataset %}
-    <div class="card">
-        
+    <div class="card m-1">
             <h5 class="card-header">{{data.post_title}}</h5>
             <div class="card-body">
                 <!-- <h5 class="card-title">Special title treatment</h5>
@@ -16,4 +28,5 @@
       <br>
       {% endfor %}
 </div>
+
 {% endblock body %}

@@ -24,6 +24,7 @@ def PostListView(request):
         context = {
             'dataset':dataset,
             'form':form,
+            
         }
     return render(request,'querys/listview.html',context)
  
@@ -59,6 +60,7 @@ def PostDetailView(request,_id):
             'data':data,
             'form':form,
             'answers':answers,
+            'number_of_answer': len(answers)
         }
     return render(request,'querys/detailview.html',context)
 

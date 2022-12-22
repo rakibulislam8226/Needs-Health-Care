@@ -2,13 +2,16 @@
 *.log
 *.pot
 *.pyc
-__pycache__
-Pipfile.lock
+__pycache__/
 *.pyc
-*~
 *.swp
 
+!.github
 
+**/migrations/*
+!**/migrations/__init__.py
+__pycache__/
+*.py[cod]
 
 
 # If you are using PyCharm # 
