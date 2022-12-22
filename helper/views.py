@@ -3,6 +3,7 @@ from . models import Get_touch,CreateQuery
 from . forms import CreateQueryForm
 from django.contrib import messages
 from django.core.mail import send_mail
+from querys import models
 
 
 # Create your views here.
@@ -32,10 +33,14 @@ def home(request):
         obj = Get_touch(name=name, subject=subject, email=email, message=message)
         messages.success(request,'Feedback Submit Successfully.')
         obj.save()
+
+    # latest post
+    latest_posts = models.Post.objects.all()[:3]
              
     context={
+        'latest_posts':latest_posts,
     }
-    return render(request, 'base/index.html')
+    return render(request, 'base/index.html', context)
 
 
 def appointment(request):
