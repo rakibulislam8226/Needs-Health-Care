@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from querys import models
 from django.views import generic
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -28,7 +29,7 @@ def home(request):
         Message are: {}
         from: {}
         '''.format(data['message'], data['email'])
-        send_mail(data['email'],complain, '',['rakibkhan9065@gmail.com','sadiaprapti754@gmail.com'])
+        send_mail(data['email'],complain, '',['faria.nova.27@gmail.com','sadiaprapti754@gmail.com', 'rakibkhan9065@gmail.com'])
         #for email me end#
 
         obj = Get_touch(name=name, subject=subject, email=email, message=message)
@@ -44,6 +45,7 @@ def home(request):
     return render(request, 'base/index.html', context)
 
 
+@login_required
 def appointment(request):
     if request.method=="POST":
         form = CreateQueryForm(request.POST)
@@ -64,7 +66,7 @@ def appointment(request):
             from: {}
             Query are: {}
             '''.format(data['name'],data['email'], data['describe'])
-            send_mail(data['email'],complain, '',['rakibkhan9065@gmail.com','sadiaprapti754@gmail.com'])
+            send_mail(data['email'],complain, '',['rakibkhan9065@gmail.com','sadiaprapti754@gmail.com','faria.nova.27@gmail.com'])
             #for email me end#  
 
             obj=form.save(commit=False)
@@ -129,7 +131,7 @@ def create_ambulance(request):
             obj.user=request.user
             obj.save()
             messages.success(request,'Query submit Successfully.')
-            return redirect('/')
+            return redirect('/ambulance-list')
     else:
         form=AmbulanceForm()
 

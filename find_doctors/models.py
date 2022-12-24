@@ -19,9 +19,6 @@ class Doctor(models.Model):
 
 
 class Patients(models.Model):
-  name = models.CharField(max_length=100)
-  phone = models.CharField(max_length=15)
-  email = models.EmailField(max_length=25)
   department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
   doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL, null=True)
 

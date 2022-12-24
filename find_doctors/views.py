@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django.contrib import messages
 from rest_framework.decorators import api_view
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
+
 from .forms import PatientForm
 from .models import Patients, Doctor
 
 
 # Create your views here.
 # @api_view(['POST',])
-@login_required
+
 def create_view(request):
   form = PatientForm()
   if request.method == 'POST':

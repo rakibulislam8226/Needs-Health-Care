@@ -20,6 +20,5 @@ class DoctorAdmin(admin.ModelAdmin):
 
 @admin.register(Patients)
 class PatientsAdmin(admin.ModelAdmin):
-  list_display = ('name','department','doctor')
+  list_display = ('department','doctor')
   list_filter = ('department', 'doctor')
-  search_fields = ('name', )
