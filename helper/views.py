@@ -45,8 +45,8 @@ def home(request):
     return render(request, 'base/index.html', context)
 
 
-@login_required
-def appointment(request):
+# @login_required
+# def appointment(request):
     if request.method=="POST":
         form = CreateQueryForm(request.POST)
         
@@ -77,31 +77,7 @@ def appointment(request):
     else:
         form=CreateQueryForm()
 
-    return render(request, 'query.html',{'form':form})
-
-
-def shop(request):
-    return render(request, 'shop.html')
-
-
-def cart(request):
-    return render(request, 'cart.html')
-
-
-def checkout(request):
-    return render(request, 'checkout.html')
-
-
-def departments(request):
-    return render(request, 'departments.html')
-
-
-def services(request):
-    return render(request, 'services.html')
-
-
-def doctor(request):
-    return render(request, 'doctor.html')
+    return render(request, 'others/appointment.html',{'form':form})
 
 
 # class AmbulanceList(generic.ListView):

@@ -4,10 +4,6 @@
 {% block body %}
 <div class="container">
   <div class="m-5">
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
-      <h5 class="text-center">Select the departments then see which doctors are available for that department.</h5>
-      </button>
-    </div>
   <form method="post" id="PatientForm" data-doctors-url="{% url 'ajax_load_doctors' %}" class="form-horizontal" role="form">
     {% csrf_token %}
     {{ form | crispy }}

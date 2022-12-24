@@ -30,20 +30,15 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('find-doctor/', include('find_doctors.urls')),
     path('query/', include('querys.urls')),
+    path('appointment/', include('appointment.urls')),
     
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
     path('', home,name='home'),
-    path('shop/', shop,name='shop'),
-    path('cart/', cart,name='cart'),
-    path('checkout/', checkout,name='checkout'),
-    path('departments/', departments,name='departments'),
-    path('services/', services, name='services'),
-    path('doctor/', doctor, name='doctor'),
     path('ambulance-list/', ambulance_list, name='ambulance'),
    #  path('ambulance-list/', AmbulanceList.as_view(), name='ambulance'),
     path('create-ambulance/', create_ambulance, name='create_ambulance'),
-    path('appointment/', appointment, name='appointment'),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
