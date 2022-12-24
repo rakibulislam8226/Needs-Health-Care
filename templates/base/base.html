@@ -34,7 +34,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'posts' %}">Querys</a>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Shop
@@ -43,10 +43,10 @@
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
           </div>
-        </li>
+        </li> -->
       </ul>
       
-      <a href="#" style="color: #FFFFFF"><button class="btn btn-danger">Ambulance</button></a> &nbsp;
+      <a href="{% url 'ambulance' %}" style="color: #FFFFFF"><button class="btn btn-danger">Ambulance</button></a> &nbsp;
       <button class="btn btn-danger"><a href="#" style="color: #FFFFFF; text-decoration:none;">Emergency</a> </button>&nbsp;
       <a href="{% url 'appointment' %}" style="color: #ececec; text-decoration:none;"><button class="btn btn-success">Get Appointment </button></a>&nbsp;
       <a href="/find-doctor/patient/add/" style="color: #ececec; text-decoration:none;"><button class="btn btn-success">Find Doctors </button></a>&nbsp;
@@ -95,53 +95,12 @@
 
   {% endblock body %}
 
+  {% block footer %}
 
-  <footer>
-    <div class="my-5">
-    <div class="row m-1">
-      <div class="col-lg-4">
-        <div class="card">
-          <h3 style="text-align: center;"><b> About us</b></h3>
-          <hr>
-        </div>
-      </div>
+  {% endblock footer %}
 
-      <div class="col-lg-4">
-        <div class="card">
-          <h3 style="text-align: center;"><b> Latest posts</b></h3>
-          
-          {% for latest_post in latest_posts %}
-          <div class="card">
-            <div class="card-body">
-              {{latest_post}}
-            </div>
-          </div>
-          {% endfor %}
-            
-        </div>
-      </div>
 
-      <div class="col-lg-4">
-        <div class="card">
-          <h3 style="text-align: center;"><b> Quick links</b></h3>
-          <div style="text-align: center;" class="card" >
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><a href="{% url 'doctor_signup' %}">Doctor Signup</a></li>
-              <li class="list-group-item"><a href="{% url 'posts' %}">All Queries</a></li>
-              <li class="list-group-item"><a href="{% url 'postcreate' %}">Create query</a></li>
-            </ul>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-    <div class="">
-      <div class="card">
-        <h3 style="text-align: center;" class="bg-dark"><b> Template licence</b></h3>
-      </div>
-    </div>
-  </div>
-  </footer>
+
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

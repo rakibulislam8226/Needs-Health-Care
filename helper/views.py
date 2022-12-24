@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from . models import Get_touch,CreateQuery
-from . forms import CreateQueryForm
+from . models import Get_touch,CreateQuery, Ambulance
+from . forms import CreateQueryForm, AmbulanceForm
 from django.contrib import messages
 from django.core.mail import send_mail
 from querys import models
+from django.views import generic
 
 
 # Create your views here.
@@ -101,5 +102,37 @@ def doctor(request):
     return render(request, 'doctor.html')
 
 
-def ambulance(request):
-    return render(request, 'ambulance.html')
+# class AmbulanceList(generic.ListView):
+#     queryset = Ambulance.objects.all()
+#     template_name = 'ambulance/ambulance_listview.html'
+
+def ambulance_list(request):
+    ambulance = Ambulance.objects.all()
+    if request.method == 'POST':
+        form = AmbulanceForm(request.POST)
+        if form.is_valid():
+            return redirect('/ambulance')
+    else:
+        form = AmbulanceForm()
+        context = {
+            'ambulance':ambulance,
+            'form':form,
+        }
+    return render(request,'ambulance/ambulance_listview.html',context)
+
+
+def create_ambulance(request):
+    if request.method=="POST":
+        form = AmbulanceForm(request.POST, request.FILES)
+        if form.is_valid(): 
+            obj=form.save(commit=False)
+            obj.user=request.user
+            obj.save()
+            messages.success(request,'Query submit Successfully.')
+            return redirect('/')
+    else:
+        form=AmbulanceForm()
+
+    return render(request, 'ambulance/ambulance.html',{'form':form})
+
+

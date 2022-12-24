@@ -1,0 +1,46 @@
+<footer>
+  <div class="my-5">
+  <div class="row m-1">
+    <div class="col-lg-4">
+      <div class="card">
+        <h3 style="text-align: center;"><b> About us</b></h3>
+        <hr>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card">
+        <h3 style="text-align: center;"><b> Latest posts</b></h3>
+        
+        {% for latest_post in latest_posts %}
+        <div class="card">
+          <div class="card-body">
+            {{latest_post}}
+          </div>
+        </div>
+        {% endfor %}
+          
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card">
+        <h3 style="text-align: center;"><b> Quick links</b></h3>
+        <div style="text-align: center;" class="card" >
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="{% url 'doctor_signup' %}">Doctor Signup</a></li>
+            <li class="list-group-item"><a href="{% url 'posts' %}">All Queries</a></li>
+            <li class="list-group-item"><a href="{% url 'postcreate' %}">Create query</a></li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="card">
+      <h3 style="text-align: center;" class="bg-dark"><b> Template licence</b></h3>
+    </div>
+  </div>
+</div>
+</footer>

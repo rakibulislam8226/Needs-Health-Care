@@ -149,8 +149,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new
 STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static'),]
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage' # new
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # send email from django start #
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'

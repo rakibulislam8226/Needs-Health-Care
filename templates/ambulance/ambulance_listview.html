@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+    
+
+{% block body %}
+<div class="container">
+    <h4>All the ambulance.</h4>
+
+    {% for data in ambulance %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{data.image.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h6 class="card-title">Driver name: {{data.driver_name}}</h6>
+          <small class="card-text">Driver number; {{data.driver_number}}</small>
+          <p class="card-text">Location: {{data.location}}</p>
+        </div>
+      </div>
+      {% endfor %}
+</div>
+
+
+
+{% endblock body %}
