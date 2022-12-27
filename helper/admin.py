@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Get_touch,CreateQuery, Ambulance
+from . models import Get_touch,CreateQuery
 from  django.contrib.auth.models  import  Group
 
 
@@ -29,14 +29,5 @@ class CreateQueryAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(CreateQuery, CreateQueryAdmin)
 
-#custom Admin site start #
-class AmbulanceAdmin(admin.ModelAdmin):
-  # readonly_fields = ('name','email',)
-  list_display = ('driver_name', 'driver_number', 'location')
-  list_filter = ('location',)
-  search_fields = ('location', 'driver_number', 'driver_name')
-#custom Admin site end #
 
-# Register your models here.
-admin.site.register(Ambulance, AmbulanceAdmin)
 

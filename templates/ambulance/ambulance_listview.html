@@ -8,15 +8,18 @@
     <h4 class="text-center">All the ambulance.</h4>
 
     <div class="row">
-      {% for data in ambulance %}
+      {% for data in dataset %}
       <div class="col-lg-4">
-        <div class="card" style="width: 18rem; height: 20rem;">
-          <img class="card-img-top" src="{{data.image.url}}" alt="Card image cap">
+        <div class="card" style="width: 18rem; height: 25rem;">
+          <img class="card-img-top img-thumbnail" src="{{data.image.url}}" alt="Card image cap">
           <div class="card-body">
-            <h6 class="card-title">Driver name: {{data.driver_name}}</h6>
-            <small class="card-text">Driver number; {{data.driver_number}}</small>
+            <h6 class="card-title">Driver name: {{data.driver_name}}</h6> 
+            <h6 class="card-text">Driver number: {{data.driver_number}}</h6>
+            <small class="card-text">Driver email: {{data.driver_email}}</small>
             <p class="card-text">Location: {{data.location}}</p>
+            <a class="btn btn-success" href="{% url 'ambulance_detail_view' _id=data.id %}">Booking</a>
           </div>
+          
         </div> <br>
       </div>
       {% endfor %}

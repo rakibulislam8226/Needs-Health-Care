@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'find_doctors',
     'querys',
     'appointment',
+    'ambulance',
     'rest_framework',
     'drf_yasg',
     'crispy_forms',

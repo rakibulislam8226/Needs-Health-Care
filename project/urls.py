@@ -31,13 +31,13 @@ urlpatterns = [
     path('find-doctor/', include('find_doctors.urls')),
     path('query/', include('querys.urls')),
     path('appointment/', include('appointment.urls')),
+    path('', include('ambulance.urls')),
     
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
     path('', home,name='home'),
-    path('ambulance-list/', ambulance_list, name='ambulance'),
    #  path('ambulance-list/', AmbulanceList.as_view(), name='ambulance'),
-    path('create-ambulance/', create_ambulance, name='create_ambulance'),
+    path('emergency', emergency, name='emergency'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

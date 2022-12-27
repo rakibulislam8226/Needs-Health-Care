@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %} 
+{% load crispy_forms_tags %} 
+
+{% block body %}
+
+    <div class="container ">
+        <div class="card m-2 ">
+            <div class="m-2 ">
+                <h5>Driver name: {{data.driver_name}}</h5> <br>
+                <h5>Driver number: {{data.driver_number}}</h5>
+                <h5>Driver number: {{data.driver_email}}</h5>
+                <h5>Location: {{data.location}}</h5> <br>
+                <h5><img src="{{data.image.url}}" alt="Ambulance image"></h5>
+            </div>
+        </div>
+
+        {% if request.user.is_authenticated %}
+            <div class="card">
+                <div class="m-2">
+                        <form method="post">
+                        {%csrf_token %}
+                        <h2>Answer Here</h2>
+                        {{form | crispy}}
+                        <input type="submit" class="btn btn-success" value="Answer" />
+                        </form>
+                </div>
+            </div>
+        {% endif %}
+
+        <hr>
+
+    </div>
+{% endblock body %}
