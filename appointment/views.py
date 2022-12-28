@@ -5,6 +5,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from .forms import PatientForm, PatientAppointmentAnswerForm
 from .models import Patients, Doctor, PatientAppointmentAnswer
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 
 # Create your views here.
@@ -69,6 +72,31 @@ def user_appointments(request,_id):
   context = {
     'data':data,
     'form':form,
-    'answers':answers,
+    'record':answers,
   }
   return render(request,'appointment/appointment_details.html',context)
+
+
+
+def render_to_pdf(template_src, context_dict={}):
+  template = get_template(template_src)
+  html = template.render(context_dict)
+  response = HttpResponse(content_type='application/pdf')
+  pdf_status = pisa.CreatePDF(html, dest=response)
+
+  if pdf_status.err:
+    return HttpResponse('Some errors were encountered <pre>' + html + '</pre>')
+
+  return response
+
+
+def prescription_pdf(request, _id):
+  template_name = "appointment/prescription_pdf.html"
+  records = PatientAppointmentAnswer.objects.get(id = _id)
+
+  return render_to_pdf(
+    template_name,
+    {
+      "record": records,
+    },
+  )
