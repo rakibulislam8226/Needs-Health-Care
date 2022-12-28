@@ -2,7 +2,7 @@ from django.contrib import admin
 
 
 # Register your models here.
-from . models import Department, Doctor, Patients
+from . models import Department, Doctor, Patients, PatientAppointmentAnswer
 
 
 @admin.register(Department)
@@ -22,3 +22,5 @@ class DoctorAdmin(admin.ModelAdmin):
 class PatientsAdmin(admin.ModelAdmin):
   list_display = ('name','email','phone','department','doctor')
   list_filter = ('department', 'doctor')
+
+admin.site.register(PatientAppointmentAnswer)

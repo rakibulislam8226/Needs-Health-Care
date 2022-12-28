@@ -1,0 +1,84 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block head %}
+    
+{% endblock head %}
+    
+
+{% block body %}
+
+<div class="container">
+    <div class="card m-2">
+        <div class="m-2">
+            <h6>Title: {{data.name}}</h6> <br>
+            <h6>Title: {{data.email}}</h6> <br>
+            <h6>Title: {{data.phone}}</h6> <br>
+            <h6>Title: {{data.department}}</h6> <br>
+            <h6>Title: {{data.doctor}}</h6> <br>
+            <h6>Description:</h6>
+            <p>{{data.describe_your_problems}}</p>
+        </div>
+    </div>
+
+
+    {% if request.user.is_doctor %}
+        <div class="card">
+            <div class="m-2">
+                <form method="post">
+                {%csrf_token %}
+                <h2>Answer Here</h2>
+                {{form | crispy}}
+                <input type="submit" class="btn btn-success" value="Answer" />
+                </form>
+            </div>
+        </div>
+    {% endif %}
+
+    <hr>
+
+    <!-- prescription start  -->
+    <div class="card">
+        <div class="m-2">
+            <div class="prescription-header">
+                <h5 style="text-align: center; color:rgb(7, 77, 30)">Needs Health Care</h5>
+                <div class="row">
+                    <div class="col-md-8">
+                        {%for answer in answers%}
+                            <p><strong>Patient Name: <small>{{answer.patient}}</small></strong></p>
+                            <p><strong>Patient Age: <small>**</small></strong></p>
+                            <p><strong>Patient Address: <small>**</small></strong></p>
+                        {%endfor %} 
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-right">
+                            <p><strong>Doctor Name: <small>Mr Demo</small></strong></p>
+                            <p><strong>Designations: <small>xxxxxxxxx</small></strong></p>
+                            <p><strong>Date: <small>12.11.2022</small></strong></p>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <hr style="border-top: 2px dashed #8c8b8b;">
+                <div class="prescription-body">
+                    {%for answer in answers%}
+                        <strong> Medicine one: <small> {{answer.medicine_one}}</small></strong> <br><br>
+                        <strong> Medicine Two: <small> {{answer.medicine_two}}</small></strong> <br><br>
+                        <strong> Medicine Three: <small> {{answer.medicine_three}}</small></strong> <br><br>
+                        <strong> Medicine Three: <small> {{answer.medicine_others}}</small></strong> <br><br>
+                        <hr>
+                        <strong> Advice: <small> {{answer.advice}}</small></strong> <br><br>
+
+                    {%endfor %} 
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end prescription   -->
+
+</div>
+
+{% endblock body %}

@@ -2,14 +2,33 @@
 {% load crispy_forms_tags %}
 
 {% block body %}
+<a href="{% url 'total_appointments' %}">All appointments</a> &nbsp;
 <div class="container">
-  <div class="m-5">
-  <form method="post" id="PatientForm" data-doctors-url="{% url 'ajax_load_doctors' %}" class="form-horizontal" role="form">
-    {% csrf_token %}
-    {{ form | crispy }}
-    <input type="submit" value="Create" class="btn btn-info">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="m-2">
+        <form method="post" id="PatientForm" data-doctors-url="{% url 'ajax_load_doctors' %}" class="form-horizontal" role="form">
+          {% csrf_token %}
+          {{ form | crispy }}
+          <input type="submit" value="Create" class="btn btn-info">
+        </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="m-2">
+        <h5>Short Links </h5>
+        
+        {% if user is request.user %}
+          <a href="#" style="color: #FFFFFF"><button class="btn btn-danger">My appointments</button></a> &nbsp;
+          
+        {% endif %}
+        <a href="{% url 'total_appointments' %}">All appointments</a> &nbsp;
+      </div>
+    </div>
   </div>
+  
 </div>
+
 {% endblock body %}
 
 
