@@ -8,8 +8,7 @@ __pycache__/
 
 !.github
 
-**/migrations/*
-__pycache__/
+**/__pycache__/*
 *.py[cod]
 
 
