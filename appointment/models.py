@@ -28,7 +28,6 @@ class Patients(models.Model):
   user=models.ForeignKey("accounts.User",on_delete=models.CASCADE)
   department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
   doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL, null=True)
-  name = models.CharField(max_length=30)
   age = models.PositiveSmallIntegerField()
   sex = models.CharField(choices=SEX, default='Male',  max_length=6,)
   email = models.EmailField(max_length=255)
@@ -36,7 +35,7 @@ class Patients(models.Model):
   describe_your_problems = models.TextField()
 
   def __str__(self):
-    return self.name
+    return self.email
 
 
 class PatientAppointmentAnswer(models.Model):

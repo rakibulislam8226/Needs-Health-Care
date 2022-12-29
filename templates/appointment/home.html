@@ -13,15 +13,17 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div style="text-align:right;" class="col-md-4">
       <div class="m-2">
         <h5>Short Links </h5>
         
-        {% if user is request.user %}
-          <a href="#" style="color: #FFFFFF"><button class="btn btn-danger">My appointments</button></a> &nbsp;
-          
+        {% if user.is_authenticated %}
+          <a href="{% url 'my_appointments' %}">My appointments</a> &nbsp;
         {% endif %}
+        <br>
+        
         <a href="{% url 'total_appointments' %}">All appointments</a> &nbsp;
+        
       </div>
     </div>
   </div>

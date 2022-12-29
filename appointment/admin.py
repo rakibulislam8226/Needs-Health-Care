@@ -20,7 +20,14 @@ class DoctorAdmin(admin.ModelAdmin):
 
 @admin.register(Patients)
 class PatientsAdmin(admin.ModelAdmin):
-  list_display = ('name','email','phone','department','doctor')
-  list_filter = ('department', 'doctor')
+  list_display = ('email','phone','department','doctor')
+  list_filter = ('department', 'doctor','user')
+  readonly_fields = ('user',)
 
-admin.site.register(PatientAppointmentAnswer)
+# admin.site.register(PatientAppointmentAnswer)
+
+
+
+@admin.register(PatientAppointmentAnswer)
+class PatientAppointmentAnswerAdmin(admin.ModelAdmin):
+  list_display = ('patient','date','test')

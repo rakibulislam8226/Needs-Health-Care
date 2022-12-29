@@ -47,27 +47,11 @@
             
             <div class="prescription-header">
                 <h1 style="text-align: center; color:rgb(7, 77, 30)">Needs Health Care</h1>
-                <div class="row">
-                    <div class="col-md-8">
-                        {%for answer in record%}
-                            <p><strong>Patient Name: <small>{{answer.patient}}</small></strong></p>
-                            <p><strong>Patient Age: <small>**</small></strong></p>
-                            <p><strong>Patient Address: <small>**</small></strong></p>
-                        {%endfor %} 
-                    </div>
-                    <div class="col-md-4">
-                        <div style="text-align: right;">
-                            <p><strong>Doctor Name: <small>Mr Demo</small></strong></p>
-                            <p><strong>Designations: <small>xxxxxxxxx</small></strong></p>  
-                            <p><strong>Date: <small>12.11.2022</small></strong></p>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
                 <hr style="border-top: 2px dashed #8c8b8b;">
                 <div class="prescription-body">
                     {%for answer in record %}
+                    <div class="card">
+                        <div class="m-2">
                         <strong> Medicine one: <small> {{answer.medicine_one}}</small></strong> <br><br>
                         <strong> Medicine Two: <small> {{answer.medicine_two}}</small></strong> <br><br>
                         <strong> Medicine Three: <small> {{answer.medicine_three}}</small></strong> <br><br>
@@ -75,7 +59,10 @@
                         <hr>
                         <strong> Advice: <small> {{answer.advice}}</small></strong> <br><br>
 
-                        <a href="{% url 'prescription_pdf' _id=answer.id %}">PDF</a>
+                        <a target="_blank" href="{% url 'prescription_pdf' _id=answer.id %}">Download PDF</a> 
+                        
+                    </div>
+                </div>  <br>
     
                     {%endfor %} 
     

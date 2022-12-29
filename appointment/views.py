@@ -19,7 +19,10 @@ def create_view(request):
   if request.method == 'POST':
     form = PatientForm(request.POST)
     if form.is_valid():
+      form = form.save(commit=False)
+      form.user = request.user
       form.save()
+
       messages.success(request, 'Create successfully.')
       return redirect('/')
   return render(request, 'appointment/home.html', {'form': form})
@@ -32,16 +35,27 @@ def load_doctors(request):
   return render(request, 'appointment/doctor_dropdown_list_options.html', {'doctors': doctors})
 
 
+
 def total_appointments(request):
   total = Patients.objects.all()
-
 
   context ={
     'total': total
   }
   return render(request ,'appointment/appointment_list.html', context)
 
+
+
+def my_appointments(request):
+  total=Patients.objects.filter(user=request.user)
+
+  context={
+    'total': total,
+  }
+  return render(request,'appointment/appointment_list.html',context)
+
  
+
 def user_appointments(request,_id):
   try:
     data = Patients.objects.get(id =_id)
@@ -62,7 +76,7 @@ def user_appointments(request,_id):
       patient=data)
       answers.save()
       messages.success(request, 'successfully request for appointment.')
-      return redirect(f'/')
+      return redirect(f'/user_appointments/{_id}')
   else:
       form = PatientAppointmentAnswerForm()
 
@@ -97,3 +111,4 @@ def prescription_pdf(request, _id):
       "record": records,
     },
   )
+

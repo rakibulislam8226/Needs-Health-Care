@@ -9,4 +9,6 @@ urlpatterns = [
     path('user_appointments/<int:_id>/', user_appointments, name='user_appointments'),
 
     path("prescription_pdf/<int:_id>/", prescription_pdf, name="prescription_pdf"),
+    
+    path("my_appointments/", my_appointments, name="my_appointments"),
 ]

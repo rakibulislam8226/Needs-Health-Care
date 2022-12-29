@@ -3,13 +3,25 @@
 
 
 {% block head %}
+<style>
+    .card:hover{
+    background-color:rgb(210, 210, 210);
+    transition: color .3s ease-in-out, box-shadow .5s ease-in-out;
+    box-shadow: inset 140ch 0 0 0 #CCCCCC;
+    transform: scale(1.1);
+    transition: transform .5s;
+    
+}
+</style>
     
 {% endblock head %}
     
 
 {% block body %}
 <div class="container">
+  <div class="mt-5">
     <div class="row">
+      
         {% for data in total %}
         <div class="col-lg-4">
     
@@ -29,6 +41,7 @@
         </div>
       {% endfor %}
     </div>
+  </div>
 </div>
 
 {% endblock body %}
