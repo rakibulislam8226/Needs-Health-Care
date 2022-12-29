@@ -1,4 +1,6 @@
 from django.db import models
+import datetime
+from multiselectfield import MultiSelectField
 
 
 # Create your models here.
@@ -18,10 +20,17 @@ class Doctor(models.Model):
 
 
 class Patients(models.Model):
+  SEX=[
+     ('Male', 'Male'),
+     ('Female', 'Female'),
+     ('Others', 'Others'),
+  ]
   user=models.ForeignKey("accounts.User",on_delete=models.CASCADE)
   department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
   doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL, null=True)
   name = models.CharField(max_length=30)
+  age = models.PositiveSmallIntegerField()
+  sex = models.CharField(choices=SEX, default='Male',  max_length=6,)
   email = models.EmailField(max_length=255)
   phone = models.CharField(max_length=15)
   describe_your_problems = models.TextField()
@@ -31,6 +40,15 @@ class Patients(models.Model):
 
 
 class PatientAppointmentAnswer(models.Model):
+  CHOICES = (
+      ('Before Breakfast', 'Before Breakfast'),
+      ('After Breakfast', 'After Breakfast'),
+      ('Before Lunch', 'Before Lunch'),
+      ('After Lunch', 'After Lunch'),
+      ('Before Dinner', 'Before Dinner'),
+      ('After Dinner', 'After Dinner'),
+      )
+
   patient = models.ForeignKey(Patients, on_delete=models.CASCADE)
   test = models.CharField(max_length=255, null=True, blank=True)
   medicine_one = models.CharField(max_length=255, null=True, blank=True)
@@ -38,6 +56,8 @@ class PatientAppointmentAnswer(models.Model):
   medicine_three = models.CharField(max_length=255, null=True, blank=True)
   medicine_others = models.CharField(max_length=500, null=True, blank=True)
   advice = models.TextField(null=True, blank=True)
+  date = models.DateField(default=datetime.date.today)
+  medicine_eating_time = MultiSelectField(choices=CHOICES, max_choices=3, max_length=200)
 
   def __str__(self):
     return self.patient.name

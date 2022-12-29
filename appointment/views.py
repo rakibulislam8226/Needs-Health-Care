@@ -1,11 +1,8 @@
-from django.shortcuts import render
 from django.contrib import messages
-from rest_framework.decorators import api_view
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import Http404
+from django.shortcuts import render, redirect
+from django.http import Http404, HttpResponse
 from .forms import PatientForm, PatientAppointmentAnswerForm
 from .models import Patients, Doctor, PatientAppointmentAnswer
-from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 

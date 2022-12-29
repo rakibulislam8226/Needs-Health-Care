@@ -1,45 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Needs Health Care </title>
 
-    <!-- prescription start  -->
-    
-    <div class="card">
-    <div class="m-2">
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
         
-        <div class="prescription-header">
-            <h1 style="text-align: center; color:rgb(7, 77, 30)">Needs Health Care</h1>
-            <div class="row">
-                <div class="col-md-8">
-                    {%for answer in record%}
-                        <p><strong>Patient Name: <small>{{answer.patient}}</small></strong></p>
-                        <p><strong>Patient Age: <small>**</small></strong></p>
-                        <p><strong>Patient Address: <small>**</small></strong></p>
-                    {%endfor %} 
-                </div>
-                <div class="col-md-4">
-                    <div style="text-align: right;">
-                        <p><strong>Doctor Name: <small>Mr Demo</small></strong></p>
-                        <p><strong>Designations: <small>xxxxxxxxx</small></strong></p>  
-                        <p><strong>Date: <small>12.11.2022</small></strong></p>
-                    </div>
-                </div>
-                
-                
-            </div>
-            <hr style="border-top: 2px dashed #8c8b8b;">
-            <div class="prescription-body">
-                {%for answer in record %}
-                    <strong> Medicine one: <small> {{answer.medicine_one}}</small></strong> <br><br>
-                    <strong> Medicine Two: <small> {{answer.medicine_two}}</small></strong> <br><br>
-                    <strong> Medicine Three: <small> {{answer.medicine_three}}</small></strong> <br><br>
-                    <strong> Medicine Three: <small> {{answer.medicine_others}}</small></strong> <br><br>
-                    <hr>
-                    <strong> Advice: <small> {{answer.advice}}</small></strong> <br><br>
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        .right {
+            text-align: right;
+            }
+        </style>
+</head>
+<body>
+    <h1 style="text-align: center; color:rgb(7, 77, 30); font-size: 40px;">Needs Health care</h1><br>
 
-                {%endfor %} 
+    <!-- patient info  -->
+    <table>
+        <tr>
+          <th>Patient Info</th>
+          <th class="right">Doctor Info</th>  
+        </tr>
 
-            </div>
+        <tr>
+          <td><p>Patient name: {{record.patient.name}}</p></td>
+          <td class="right"> <strong> Doctor name:</strong>  Helen Bennett</td>
+        </tr>
+        
+        <tr>
+          <td>Age: {{record.patient.age}}</td>
+          <td class="right"> <strong> Department:</strong>  {{record.patient.doctor.department.name}}</td>
+        </tr>
+
+        <tr>
+          <td>Sex: {{record.patient.sex}}</td>
+          <td class="right"> <strong> Date:</strong>  {{record.date}}</td>
+        </tr>
+
+      </table> 
+<hr>
+
+    <table>
+        <tr>
+          <th>Medicine Info</th>
+          <th class="right">Medication rules</th>  
+        </tr>
+
+        <tr>
+          <td><p style="font-size: 15px;"><strong>Medicine 1: </strong> {{ record.medicine_one }}</p></td>
+          <td class="right"> <strong> Medication:</strong>  {{record.medicine_eating_time}}</td>
+        </tr>
+        
+        <tr>
+            <td><p style="font-size: 15px;"><strong>Medicine 2: </strong> {{ record.medicine_two }}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="font-size: 15px;"><strong>Medicine 3: </strong> {{ record.medicine_three }}</p></td>
+        </tr>
+        <tr>
+            <td><p style="font-size: 15px;"><strong>Medicine others: </strong> {{ record.medicine_others }}</p></td>
+        </tr>
+
+      </table>
+    
+    <hr>
+
+    <div class="card">
+        <div class="m-2">
+            <h1 style="font-size: 20px;">Medicale Test</h1>
+            {{ record.test }}
+            <hr>
+
         </div>
     </div>
-    
-</div>
 
-<!-- end prescription   -->
+    <div class="card">
+        <div class="m-2">
+            <h1 style="font-size: 20px;">Advice</h1>
+            {{ record.advice }}
+            
+        </div>
+    </div>
+
+
+    
+</body>
+</html>
+

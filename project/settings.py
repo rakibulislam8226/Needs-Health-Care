@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'crispy_forms',
+    'multiselectfield',
 ]
 
 MIDDLEWARE = [

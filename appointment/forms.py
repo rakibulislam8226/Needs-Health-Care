@@ -22,11 +22,11 @@ class PatientForm(forms.ModelForm):
 
   
 class PatientAppointmentAnswerForm(forms.Form):
-  test =forms.CharField(widget=forms.TextInput(attrs={'minlength': 11, 'maxlength': 14}))
-  medicine_one =forms.CharField(widget=forms.TextInput(attrs={'minlength': 11, 'maxlength': 14}))
-  medicine_two =forms.CharField(widget=forms.TextInput(attrs={'minlength': 11, 'maxlength': 14}))
-  medicine_three =forms.CharField(widget=forms.TextInput(attrs={'minlength': 11, 'maxlength': 14}))
-  medicine_others =forms.CharField(widget=forms.TextInput(attrs={'minlength': 11, 'maxlength': 14}))
+  test =forms.CharField()
+  medicine_one =forms.CharField()
+  medicine_two =forms.CharField()
+  medicine_three =forms.CharField()
+  medicine_others =forms.CharField()
   advice =forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20, 'placeholder': 'Thana, Road number, Home number, Area, Others info..'}))
 
   def __str__(self):
