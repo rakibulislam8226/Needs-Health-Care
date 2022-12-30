@@ -84,6 +84,3 @@ def home(request):
 #     queryset = Ambulance.objects.all()
 #     template_name = 'ambulance/ambulance_listview.html'
 
-
-def emergency(request):
-    return render(request, 'emergency/demo.html')

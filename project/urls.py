@@ -26,18 +26,19 @@ schema_view = get_schema_view(
 from helper.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home,name='home'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('accounts/', include('accounts.urls')),
     path('find-doctor/', include('find_doctors.urls')),
     path('query/', include('querys.urls')),
     path('appointment/', include('appointment.urls')),
     path('', include('ambulance.urls')),
+    path('', include('chat.urls')),
     
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
-    path('', home,name='home'),
+    
    #  path('ambulance-list/', AmbulanceList.as_view(), name='ambulance'),
-    path('emergency', emergency, name='emergency'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

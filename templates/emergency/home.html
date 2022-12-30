@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+    
+
+{% block body %}
+
+<div class="row">
+  <div class="col-lg-3">
+    {% if request.user.is_superuser %}
+      {% for room in all_rooms %}
+        <a href="/{{room.name}}">{{room.name}}</a>  <br>
+      {% endfor %}
+    {% endif %}
+    
+    
+  </div>
+  <div class="col-lg-9">
+    <div align="center">
+      <h2>Emergency Chat</h2>
+    </div>
+
+    <div class="container">
+
+
+      <form id="post-form" method="POST" action="{% url 'checkview' %}">
+        {% csrf_token %}
+        <input
+          type="hidden"
+          name="room_name"
+          value="{{request.user.username}}-{{request.user.id}}"
+          id="room_details"
+          readonly
+          width="100px"
+        />
+        <input
+          type="hidden"
+          name="username"
+          id="username"
+          value="{{request.user.username}}"
+          readonly
+          width="100px"
+        />
+        <button type="submit" class="btn btn-outline-success">Enter Emergency Chat Room</button>
+        
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock body %}
+
