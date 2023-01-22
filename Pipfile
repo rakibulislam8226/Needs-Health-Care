@@ -12,6 +12,7 @@ whitenoise = "*"
 drf-yasg = "*"
 xhtml2pdf = "*"
 django-multiselectfield = "*"
+django-xhtml2pdf = "*"
 
 [dev-packages]
 
