@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'appointment',
     'ambulance',
     'chat',
+    'payment',
     'rest_framework',
     'drf_yasg',
     'crispy_forms',

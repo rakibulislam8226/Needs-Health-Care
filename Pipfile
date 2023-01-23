@@ -12,6 +12,7 @@ whitenoise = "*"
 drf-yasg = "*"
 xhtml2pdf = "*"
 django-multiselectfield = "*"
+sslcommerz-lib = "*"
 
 [dev-packages]
 
