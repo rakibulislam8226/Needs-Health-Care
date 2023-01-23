@@ -27,6 +27,7 @@ from helper.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home,name='home'),
+    path('doctors_dashboard/', doctors_dashboard,name='doctors_dashboard'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('accounts/', include('accounts.urls')),
     path('find-doctor/', include('find_doctors.urls')),

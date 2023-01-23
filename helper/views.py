@@ -6,6 +6,8 @@ from django.core.mail import send_mail
 from querys import models
 from django.views import generic
 from django.contrib.auth.decorators import login_required
+from appointment.models import Patients
+from querys.models import Post
 
 
 # Create your views here.
@@ -45,42 +47,14 @@ def home(request):
     return render(request, 'base/index.html', context)
 
 
-# @login_required
-# def appointment(request):
-    # if request.method=="POST":
-    #     form = CreateQueryForm(request.POST)
-        
-    #     if form.is_valid():
-    #         #for email me start#
 
-    #         name = request.POST['name']
-    #         email = request.POST['email']
-    #         describe = request.POST['describe']
-    #         data={
-    #         'name':name,
-    #         'email':email,
-    #         'describe':describe,
-    #         }
-    #         complain = ''' 
-    #         Name: {}
-    #         from: {}
-    #         Query are: {}
-    #         '''.format(data['name'],data['email'], data['describe'])
-    #         send_mail(data['email'],complain, '',['rakibkhan9065@gmail.com','sadiaprapti754@gmail.com','faria.nova.27@gmail.com'])
-    #         #for email me end#  
+def doctors_dashboard(request):
+    all_appointments = Patients.objects.all()
+    all_querys = Post.objects.all()
 
-    #         obj=form.save(commit=False)
-    #         obj.user=request.user
-    #         obj.save()
-    #         messages.success(request,'Query created Successfully.')
-    #         return redirect('/')
-    # else:
-    #     form=CreateQueryForm()
+    context = {
+        'all_appointments':all_appointments,
+        'all_querys':all_querys,
 
-    # return render(request, 'others/appointment.html',{'form':form})
-
-
-# class AmbulanceList(generic.ListView):
-#     queryset = Ambulance.objects.all()
-#     template_name = 'ambulance/ambulance_listview.html'
-
+    }
+    return render(request, 'dashboard/doctors.html', context)

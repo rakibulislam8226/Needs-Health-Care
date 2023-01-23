@@ -20,7 +20,7 @@ def sslcommerz_payment_gateway(request, name, amount):
     post_body['total_amount'] = amount
     post_body['currency'] = "BDT"
     post_body['tran_id'] = unique_trangection_id_generator()
-    post_body['success_url'] = 'http://127.0.0.1:8000/appointment/add/'
+    post_body['success_url'] = 'http://127.0.0.1:8000/payment/success/render/appointment/'
     post_body['fail_url'] = 'http://127.0.0.1:8000/payment/'
     post_body['cancel_url'] = 'http://127.0.0.1:8000/'
     post_body['emi_option'] = 0

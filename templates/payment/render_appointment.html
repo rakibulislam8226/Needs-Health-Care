@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+<style>
+    .center {
+      margin: auto;
+      width: 60%;
+      border: 3px solid #73AD21;
+      padding: 10px;
+    }
+    </style>
+{% endblock head %}
+
+
+{% block body %}
+<div class="center">
+  <h3>Your payment paid successfully. you are now able to get appointment.</h3>
+  <a class="btn btn-success m-3" href="{% url 'add_appointment' %}">Request for appointments</a>
+
+</div>
+{% endblock %}
