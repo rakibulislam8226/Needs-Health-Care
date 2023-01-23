@@ -4,11 +4,11 @@
 
 {% block body %}
 <div class="col-md-6 offset-md-3">
-  <form action="/appointment/add/" method="post">
+  <form action="/" method="post">
     <br>
     <h4 style="text-align: center; color:rgb(7, 77, 30)">Create an appointment.</h4><br>
     {% csrf_token %}
-    {{form | crispy}}
+    {{ form | crispy }}
     <div class="">
       <button type="submit" class="btn btn-outline-success btn-block">Create</button> <br>
      

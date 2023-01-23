@@ -30,7 +30,7 @@ def PostListView(request):
  
 
 def PostCreateView(request):
-    form = PostForm(request.POST)
+    form = PostForm(request.POST or None)
     if form.is_valid():
         form.save()
         messages.success(request, 'Create successfully.')

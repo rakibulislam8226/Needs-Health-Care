@@ -5,19 +5,20 @@ from .forms import PatientForm, PatientAppointmentAnswerForm
 from .models import Patients, Doctor, PatientAppointmentAnswer
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
 # @api_view(['POST',])
-
+@csrf_exempt
 def create_view(request):
   default_user = {
     'user':request.user
   }
 
-  form = PatientForm(initial=default_user)
+  form = PatientForm(initial=default_user or None)
   if request.method == 'POST':
-    form = PatientForm(request.POST)
+    form = PatientForm(request.POST or None)
     if form.is_valid():
       form = form.save(commit=False)
       form.user = request.user
