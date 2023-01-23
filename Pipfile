@@ -13,6 +13,7 @@ drf-yasg = "*"
 xhtml2pdf = "*"
 django-multiselectfield = "*"
 django-xhtml2pdf = "*"
+sslcommerz-lib = "*"
 
 [dev-packages]
 

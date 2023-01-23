@@ -41,6 +41,7 @@ ruamel.yaml==0.17.21
 ruamel.yaml.clib==0.2.7
 six==1.16.0
 sqlparse==0.4.3
+sslcommerz-lib==1.0
 svglib==1.4.1
 tinycss2==1.2.1
 tqdm==4.64.1

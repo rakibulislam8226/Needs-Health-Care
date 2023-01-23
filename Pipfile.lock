@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7f4cecb911d091cbf84786c8d6b1ebd7239de15589a79a2992c82e24297d8a66"
+            "sha256": "4756cdf9512ace702d42e148f6b13331222733290b2004b05734cfa51817c29b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -816,6 +816,14 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==0.4.3"
+        },
+        "sslcommerz-lib": {
+            "hashes": [
+                "sha256:24751cabe79da0e7ea27076827db4f8bbc02d70df79aff5efea14266281c5e40",
+                "sha256:b77f1a88a6c320ab161d76c85f7c73b2741f0c49c4fe2df35e8bc1b50dc4ce3e"
+            ],
+            "index": "pypi",
+            "version": "==1.0"
         },
         "svglib": {
             "hashes": [
