@@ -25,7 +25,7 @@ def create_view(request):
       form.save()
 
       messages.success(request, 'Create successfully.')
-      return redirect('/')
+      return redirect('/appointment/my_appointments/')
   return render(request, 'appointment/home.html', {'form': form})
 
 
@@ -52,6 +52,7 @@ def my_appointments(request):
 
   context={
     'total': total,
+    'total_appointment':len(total),
   }
   return render(request,'appointment/appointment_list.html',context)
 

@@ -32,8 +32,6 @@
             <small class="card-header">{{data.department}}</small>
             <small class="card-header">{{data.doctor}}</small>
             <div class="card-body sm">
-                <!-- <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
                 <a href="{% url 'user_appointments' _id=data.id %}" class="btn btn-primary">Read More</a>
             </div>
       </div>
@@ -42,6 +40,16 @@
       {% endfor %}
     </div>
   </div>
+
+  {% if total_appointment %}
+      <h5 style="color:rgb(150, 185, 93);" class="text">You have total {{ total_appointment }} appointments.</h5>
+  {% else %}
+  <h5 class="text-center" style="color:red;">You don't have any appointment yet.</h5>
+      
+  {% endif %}
+
 </div>
+
+
 
 {% endblock body %}
