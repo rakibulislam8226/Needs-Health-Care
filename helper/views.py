@@ -6,8 +6,7 @@ from django.core.mail import send_mail
 from querys import models
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-from appointment.models import Patients
-from querys.models import Post
+
 
 
 # Create your views here.
@@ -48,13 +47,4 @@ def home(request):
 
 
 
-def doctors_dashboard(request):
-    all_appointments = Patients.objects.all()
-    all_querys = Post.objects.all()
 
-    context = {
-        'all_appointments':all_appointments,
-        'all_querys':all_querys,
-
-    }
-    return render(request, 'dashboard/doctors.html', context)

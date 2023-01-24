@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'ambulance',
     'chat',
     'payment',
+    'doctor_dashboard',
     'rest_framework',
     'drf_yasg',
     'crispy_forms',

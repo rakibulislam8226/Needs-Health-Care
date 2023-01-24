@@ -6,12 +6,35 @@
     <title>Needs Healthcare | Doctors Dashboard</title>
 </head>
 <body>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
 
     <h3 class="text-center">This is doctor dashboard.</h3>
     <a href="{% url 'home' %}">Home</a>
     
 
     <div class="container">
+        <button class="btn btn-danger"><a href="{% url 'chat' %}" style="color: #FFFFFF; text-decoration:none;">Emergency</a> </button>&nbsp;
+
         <h4>Short links</h4>
         <div class="total_appointments m-3">
             <h4>Appointments Details</h4>

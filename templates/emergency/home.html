@@ -6,23 +6,24 @@
 {% block body %}
 
 <div class="row">
+
   <div class="col-lg-3">
-    {% if request.user.is_superuser %}
+    <div class="card">
+    {% if request.user.is_superuser or user.is_doctor %}
       {% for room in all_rooms %}
-        <a href="/{{room.name}}">{{room.name}}</a>  <br>
+      <span><a class="btn btn-outline-success" href="/{{room.name}}">{{room.name}}</a> </span> <br>
       {% endfor %}
     {% endif %}
-    
-    
   </div>
+  </div>
+
   <div class="col-lg-9">
     <div align="center">
       <h2>Emergency Chat</h2>
     </div>
 
+    {% if request.user.is_patient %}
     <div class="container">
-
-
       <form id="post-form" method="POST" action="{% url 'checkview' %}">
         {% csrf_token %}
         <input
@@ -45,6 +46,7 @@
         
       </form>
     </div>
+    {% endif %}
 
   </div>
 </div>
