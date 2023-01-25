@@ -21,11 +21,11 @@ def PostListView(request):
             return redirect(f'/post/{post.id}')
     else:
         form = SearchForm()
-        context = {
-            'dataset':dataset,
-            'form':form,
-            
-        }
+
+    context = {
+        'dataset':dataset,
+        'form':form
+    }
     return render(request,'querys/listview.html',context)
  
 

@@ -1,0 +1,48 @@
+{% extends "doctors_dashboard/base.html" %}
+
+{% block body %}
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-6">
+      <div class="total_appointments m-3">
+        <div class="card">
+          <h4 class="card-title">Appointments Details</h5>
+          <a class="btn btn-outline-info" href="{% url 'total_appointments' %}" title="It will render you in the main website.">Total appointments</a> <br>
+          <a class="btn btn-outline-info" href="#">Answerless appointments</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="querys m-3">
+        <div class="card">
+          <h4 class="card-title">Querys Details</h5>
+          <a class="btn btn-outline-info" href="{% url 'posts' %}" title="It will render you in the main website.">Total Querys</a> <br>
+          {% for querys in answer_query %}
+          <a class="btn btn-outline-info" href="{% url 'query_view' _id=querys.id %}">Answerless Querys</a>
+          {% endfor %}  
+          
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pending-work m-3">
+    <h4>Pending work</h4>
+    {% if answer_query != 0%}
+      <h5>you have 5 query answer pending.</h5>
+    {% endif %}
+  </div>
+  
+</div>
+
+    
+{% endblock body %}
+
+
+    
+
+

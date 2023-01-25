@@ -16,7 +16,6 @@ class IndexView(TemplateView):
 def DonateView(request):
     name = request.POST['name']
     amount = request.POST['amount']
-    print(sslcommerz_payment_gateway.__class__)
     return redirect(sslcommerz_payment_gateway(request, name, amount))
 
 

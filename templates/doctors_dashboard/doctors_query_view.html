@@ -1,0 +1,11 @@
+{% extends "doctors_dashboard/base.html" %}
+
+{% block body %}
+<h3>Query</h3>
+    {% if answers_query != 0 %}
+    <h1>Give querys answer</h1>
+    {% else %}
+    <h1>All the query are answerd.</h1>
+    {% endif %}
+    
+{% endblock body %}

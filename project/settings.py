@@ -166,5 +166,5 @@ EMAIL_HOST_USER='cartoonsbazar@gmail.com'
 EMAIL_HOST_PASSWORD='zbabafwjmrcmxhoz'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
-DEFAULT_FROM_EMAIL = 'OTF Team <cartoonsbazar@gmail.com>'
+DEFAULT_FROM_EMAIL = 'Needs Health Care <cartoonsbazar@gmail.com>'
 # send email from django end  #
