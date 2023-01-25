@@ -11,7 +11,12 @@
         <div class="card">
           <h4 class="card-title">Appointments Details</h5>
           <a class="btn btn-outline-info" href="{% url 'total_appointments' %}" title="It will render you in the main website.">Total appointments</a> <br>
-          <a class="btn btn-outline-info" href="#">Answerless appointments</a>
+          {% if all_appointments != 0 %}
+          <a class="btn btn-outline-info" href="#">Pending appointments</a>
+          {% else %}
+          <h4>There is no pending appointment.</h4>
+          {% endif %}
+          
         </div>
       </div>
     </div>
@@ -21,22 +26,17 @@
         <div class="card">
           <h4 class="card-title">Querys Details</h5>
           <a class="btn btn-outline-info" href="{% url 'posts' %}" title="It will render you in the main website.">Total Querys</a> <br>
-          {% for querys in answer_query %}
-          <a class="btn btn-outline-info" href="{% url 'query_view' _id=querys.id %}">Answerless Querys</a>
-          {% endfor %}  
+          
+          {% if answer_query != 0 %}
+          <a class="btn btn-outline-info" href="{% url 'query_view' %}">Pending Querys</a>
+          {% else %}
+          <h4>There is no pending query.</h4>
+          {% endif %} 
           
       </div>
       </div>
     </div>
   </div>
-
-  <div class="pending-work m-3">
-    <h4>Pending work</h4>
-    {% if answer_query != 0%}
-      <h5>you have 5 query answer pending.</h5>
-    {% endif %}
-  </div>
-  
 </div>
 
     
