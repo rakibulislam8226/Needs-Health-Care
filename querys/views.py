@@ -33,7 +33,7 @@ def PostCreateView(request):
     form = PostForm(request.POST or None)
     if form.is_valid():
         form.save()
-        messages.success(request, 'Create successfully.')
+        messages.success(request, 'Query create successfully.')
         return redirect("posts")
     return render(request,'querys/post.html',{'form':form})
 

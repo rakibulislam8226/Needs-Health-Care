@@ -2,6 +2,11 @@
 
 {% block body %}
 
+<div class="container">
+  <div class="alert alert-info text-center" role="alert">
+    <strong>Welcome to doctors dashboard.</strong>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
@@ -28,9 +33,9 @@
           <a class="btn btn-outline-info" href="{% url 'posts' %}" title="It will render you in the main website.">Total Querys</a> <br>
           
           {% if answer_query != 0 %}
-          <a class="btn btn-outline-info" href="{% url 'query_view' %}">Pending Querys</a>
+            <a class="btn btn-outline-info" href="{% url 'unanswer_query' %}">Pending Querys</a>
           {% else %}
-          <h4>There is no pending query.</h4>
+            <h4>There is no pending query.</h4>
           {% endif %} 
           
       </div>

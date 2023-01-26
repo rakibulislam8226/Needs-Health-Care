@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
   path('home/', views.doctors_dashboard, name='doctor_dashboard'),
-  path('query_view/', views.query_view, name='query_view'),
+  path('unanswer-query/', views.unanswer_query_view, name='unanswer_query'),
 
 ]
