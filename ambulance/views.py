@@ -3,6 +3,7 @@ from . import forms
 from . import models
 from django.http import Http404
 from django.contrib import messages
+from django.core.mail import send_mail
 
 # Create your views here.
  
@@ -40,6 +41,17 @@ def ambulance_detail_view(request,_id):
             number=form.cleaned_data['number'],
             location=form.cleaned_data['location'],
             ambulance=data)
+
+            #for email me start#
+            send_mail(
+                f'You are hired from {answers}' ,
+                f'number {answers.number} and location {answers.location}',
+                'cartoonbazar@gmail.com',
+                [data.driver_email, 'rakibkhan9065@gmail.com'],
+                fail_silently=False,
+            )
+            #for email me end#
+
             answers.save()
             messages.success(request, 'successfully request for ambulence.')
             return redirect(f'/ambulances')
