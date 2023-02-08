@@ -29,12 +29,12 @@ class PatientForm(forms.ModelForm):
 
   
 class PatientAppointmentAnswerForm(forms.Form):
-  test =forms.CharField()
-  medicine_one =forms.CharField()
-  medicine_two =forms.CharField()
-  medicine_three =forms.CharField()
-  medicine_others =forms.CharField()
-  advice =forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20, 'placeholder': 'Thana, Road number, Home number, Area, Others info..'}))
+  test =forms.CharField(required=False)
+  medicine_one =forms.CharField(required=False)
+  medicine_two =forms.CharField(required=False)
+  medicine_three =forms.CharField(required=False)
+  medicine_others =forms.CharField(required=False)
+  advice =forms.CharField(required=False, widget=forms.Textarea(attrs={"rows":5, "cols":20, 'placeholder': 'Thana, Road number, Home number, Area, Others info..'}))
 
   def __str__(self):
     return f"{self.medicine_one}"

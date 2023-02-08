@@ -43,13 +43,13 @@ def ambulance_detail_view(request,_id):
             ambulance=data)
 
             #for email me start#
-            send_mail(
-                f'You are hired from {answers}' ,
-                f'number {answers.number} and location {answers.location}',
-                'cartoonbazar@gmail.com',
-                [data.driver_email, 'rakibkhan9065@gmail.com'],
-                fail_silently=False,
-            )
+            # send_mail(
+            #     f'You are hired from {answers}' ,
+            #     f'number {answers.number} and location {answers.location}',
+            #     'cartoonbazar@gmail.com',
+            #     [data.driver_email, 'rakibkhan9065@gmail.com'],
+            #     fail_silently=False,
+            # )
             #for email me end#
 
             answers.save()

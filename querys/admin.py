@@ -16,7 +16,7 @@ from . models import Post, AnswerPost
   
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-  list_display = ('post_title','post')
+  list_display = ('post_title','descriptions')
   # search_fields = ('name','department')
   
 @admin.register(AnswerPost)

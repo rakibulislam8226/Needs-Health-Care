@@ -20,17 +20,17 @@ def home(request):
         message = request.POST['message']
 
         #for email me start#
-        data={
-        'name':name,
-        'email':email,
-        'subject':subject,
-        'message':message,
-        }
-        complain = ''' 
-        Message are: {}
-        from: {}
-        '''.format(data['message'], data['email'])
-        send_mail(data['email'],complain, '',['faria.nova.27@gmail.com','sadiaprapti754@gmail.com', 'rakibkhan9065@gmail.com'])
+        # data={
+        # 'name':name,
+        # 'email':email,
+        # 'subject':subject,
+        # 'message':message,
+        # }
+        # complain = ''' 
+        # Message are: {}
+        # from: {}
+        # '''.format(data['message'], data['email'])
+        # send_mail(data['email'],complain, '',['faria.nova.27@gmail.com','sadiaprapti754@gmail.com', 'rakibkhan9065@gmail.com'])
         #for email me end#
 
         obj = Get_touch(name=name, subject=subject, email=email, message=message)

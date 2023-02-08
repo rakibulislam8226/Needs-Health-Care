@@ -5,7 +5,7 @@ from . import models
 class PostForm(forms.ModelForm):
     class Meta:
         model = models.Post
-        fields = ['post_title','post']
+        fields = ['post_title','descriptions']
 
 
 class AnswerForm(forms.Form):

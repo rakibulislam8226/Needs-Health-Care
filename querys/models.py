@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Post(models.Model):
     post_title = models.CharField(max_length=255)
-    post = models.TextField()
+    descriptions = models.TextField()
     # answer_post = models.ForeignKey('AnswerPost', on_delete=models.CASCADE, null=True, blank=True, related_name='answer')
 
     class Meta:

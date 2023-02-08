@@ -78,7 +78,7 @@ def user_appointments(request,_id):
       patient=data)
       answers.save()
       messages.success(request, 'successfully request for appointment.')
-      return redirect(f'/user_appointments/{_id}')
+      return redirect(f'/appointment/user_appointments/{_id}')
   else:
       form = PatientAppointmentAnswerForm()
 

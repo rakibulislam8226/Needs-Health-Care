@@ -60,4 +60,4 @@ class PatientAppointmentAnswer(models.Model):
     medicine_eating_time = MultiSelectField(choices=CHOICES, max_choices=3, max_length=200)
 
     def __str__(self):
-        return self.patient.name
+        return self.patient.email
