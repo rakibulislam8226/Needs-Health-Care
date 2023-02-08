@@ -17,17 +17,15 @@ def home(request):
 
 
 def room(request, room):
-    try:
-        username = request.GET.get('username')
-        room_details = Room.objects.get(name=room)
-    except:
-        pass
-    
+    username = request.GET.get('username')
+    room_details = Room.objects.get(name=room)
+
 
     return render(request, 'emergency/room.html', {
         'username': username,
         'room': room,
-        
+        'room_details': room_details
+
     })
 
 
