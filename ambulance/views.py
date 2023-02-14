@@ -43,17 +43,17 @@ def ambulance_detail_view(request,_id):
             ambulance=data)
 
             #for email me start#
-            # send_mail(
-            #     f'You are hired from {answers}' ,
-            #     f'number {answers.number} and location {answers.location}',
-            #     'cartoonbazar@gmail.com',
-            #     [data.driver_email, 'rakibkhan9065@gmail.com'],
-            #     fail_silently=False,
-            # )
+            send_mail(
+                f'You are hired from {answers.name}' ,
+                f'Customer contract number: {answers.number} \n Pickup location- {answers.location}.\n Thank you. Stay connected with Needs Healthcare.',
+                'settings.DEFAULT_FROM_EMAIL',
+                [data.driver_email, 'faria.nova.27@gmail.com','sadiaprapti754@gmail.com', 'rakibkhan9065@gmail.com'],
+                fail_silently=False,
+            )
             #for email me end#
 
             answers.save()
-            messages.success(request, 'successfully request for ambulence.')
+            messages.success(request, 'Successfully request for ambulence.')
             return redirect(f'/ambulances')
     else:
         form = forms.Ambulance_hireForm()

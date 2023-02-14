@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.contrib.auth.views import PasswordResetView,PasswordResetDoneView,PasswordResetConfirmView,PasswordResetCompleteView
+from .views import ActivateAccount
 
 
 urlpatterns = [
@@ -17,6 +18,7 @@ urlpatterns = [
     path("logout/", views.logout_view, name="logout_view"),
     path('patient-signup/', views.PatientSignUpView.as_view(), name='patient_signup'),
     path('doctor-signup/', views.DoctorSignUpView.as_view(), name='doctor_signup'),
+    path('activate/<uidb64>/<token>/', ActivateAccount.as_view(), name='activate'),
 
 
 

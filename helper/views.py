@@ -19,18 +19,26 @@ def home(request):
         subject = request.POST['subject']
         message = request.POST['message']
 
+        # send_mail(
+        #     'Contract from',
+        #     message,
+        #     'settings.EMAIL_HOST_USER',
+        #     [email,'rakibkhan9065@gmail.com'],
+        #     fail_silently=False
+        # )
+
         #for email me start#
-        # data={
-        # 'name':name,
-        # 'email':email,
-        # 'subject':subject,
-        # 'message':message,
-        # }
-        # complain = ''' 
-        # Message are: {}
-        # from: {}
-        # '''.format(data['message'], data['email'])
-        # send_mail(data['email'],complain, '',['faria.nova.27@gmail.com','sadiaprapti754@gmail.com', 'rakibkhan9065@gmail.com'])
+        data={
+        'name':name,
+        'email':email,
+        'subject':subject,
+        'message':message,
+        }
+        complain = ''' 
+        Message are: {}
+        from: {}
+        '''.format(data['message'], data['email'])
+        send_mail(data['email'],complain, '',['faria.nova.27@gmail.com','sadiaprapti754@gmail.com', 'rakibkhan9065@gmail.com'], fail_silently=False)
         #for email me end#
 
         obj = Get_touch(name=name, subject=subject, email=email, message=message)

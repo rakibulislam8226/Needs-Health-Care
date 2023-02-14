@@ -25,6 +25,8 @@
                         </form>
                 </div>
             </div>
+        {% else %}
+        <h4 class="text-center text-danger">Login first to hire ambulance. <a href="{% url 'login' %}">Login</a></h4>
         {% endif %}
 
         <hr>
