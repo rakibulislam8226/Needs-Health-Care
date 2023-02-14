@@ -4,7 +4,7 @@ from django.db import models
 class Post(models.Model):
     post_title = models.CharField(max_length=255)
     descriptions = models.TextField()
-    # answer_post = models.ForeignKey('AnswerPost', on_delete=models.CASCADE, null=True, blank=True, related_name='answer')
+    answer_post = models.ForeignKey('AnswerPost', on_delete=models.CASCADE, null=True, blank=True, related_name='answer')
 
     class Meta:
         ordering = ['-id']
@@ -26,7 +26,7 @@ class AnswerPost(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
      
     def __str__(self):
-        return f"Answer by Name: {self.name}"
+        return f"Answer by Name: {self.name} test {self.answer_text}"
     
     class Meta:
       ordering = ['-id']

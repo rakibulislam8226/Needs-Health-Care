@@ -7,6 +7,8 @@ from .models import PatientSignUp, DoctorSignUp,User
 class PatientSignUpForm(UserCreationForm):
     name=forms.CharField(required=True)
     age=forms.CharField(required=True)
+    phone = forms.CharField(required=True)
+    email = forms.EmailField(required=True)
     class Meta(UserCreationForm.Meta):
         model = User
         
@@ -17,7 +19,9 @@ class PatientSignUpForm(UserCreationForm):
         user.save()
         name = self.cleaned_data['name']
         age = self.cleaned_data['age']
-        patients = PatientSignUp.objects.create(user=user, name=name, age=age)
+        phone = self.cleaned_data['age']
+        email = self.cleaned_data['age']
+        patients = PatientSignUp.objects.create(user=user, name=name, age=age, phone=phone, email=email)
         patients.save()
         return user
     
@@ -25,11 +29,14 @@ class PatientSignUpForm(UserCreationForm):
 class DoctorSignUpForm(UserCreationForm):
     name=forms.CharField(required=True)
     age=forms.CharField(required=True)
-    email = forms.CharField(max_length=255, required=True)
+    phone = forms.CharField(required=True)
+    email = forms.CharField(required=True)
+    department = forms.CharField(required=True)
   
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'phone', 'department', 'password1', 'password2']
+
  
     @transaction.atomic
     def save(self):
@@ -38,6 +45,9 @@ class DoctorSignUpForm(UserCreationForm):
         user.save()
         name = self.cleaned_data['name']
         age = self.cleaned_data['age']
-        doctors = DoctorSignUp.objects.create(user=user, name=name, age=age)
+        phone = self.cleaned_data['phone']
+        email = self.cleaned_data['email']
+        department = self.cleaned_data['department']
+        doctors = DoctorSignUp.objects.create(user=user, name=name, age=age, phone=phone, email=email, department=department)
         doctors.save()
         return user

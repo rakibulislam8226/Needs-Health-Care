@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
+from ambulance.models import PossiblePhoneNumberField
 
 
 class User(AbstractUser):
@@ -11,6 +12,8 @@ class DoctorSignUp(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     name = models.CharField(max_length=100)
     age = models.CharField(max_length=100)
+    phone = PossiblePhoneNumberField(blank=True, default="", null=True)
+    email = models.EmailField(max_length=255, null=True, blank=False)
     department = models.CharField(max_length=100)
     hospital = models.CharField(max_length=110)
     education = models.CharField(max_length=255)
@@ -26,6 +29,8 @@ class PatientSignUp(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     name = models.CharField(max_length=100)
     age = models.CharField(max_length=100)
+    phone = PossiblePhoneNumberField(blank=True, default="", null=True)
+    email = models.EmailField(max_length=255, null=True, blank=False)
 
     def __str__(self) -> str:
         return self.user.username

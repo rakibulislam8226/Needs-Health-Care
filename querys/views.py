@@ -13,6 +13,8 @@ from django.db.models import Q
 # Create your views here.
 def PostListView(request):
     dataset = models.Post.objects.all()
+    querysetlen = models.Post.objects.filter().count()
+    
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
@@ -24,7 +26,8 @@ def PostListView(request):
 
     context = {
         'dataset':dataset,
-        'form':form
+        'form':form,
+        "querysetlen":querysetlen,
     }
     return render(request,'querys/listview.html',context)
  
@@ -72,7 +75,7 @@ class SearchResultView(ListView):
     def get_queryset(self):  # new
         query = self.request.GET.get("q")
         object_list = models.Post.objects.filter(
-            Q(post_title__icontains=query) | Q(post__icontains=query)
+            Q(post_title__icontains=query) | Q(descriptions__icontains=query)
         )
         return object_list
 
