@@ -20,13 +20,27 @@
                         <form method="post">
                         {%csrf_token %}
                         <h2>Booking Information</h2>
-                        {{form | crispy}}
+                         {{form | crispy}} 
                         <input type="submit" class="btn btn-success" value="Booked" />
-                        </form>
+                            <!-- <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Email address</label>
+                              <input type="text" name='email' class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputPassword1" class="form-label">Location</label>
+                              <input type="text" class="form-control" id="location" name='location' required>
+                            </div>
+                            <div class="mb-3 form-check">
+                              <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                              <label class="form-check-label" name='agree' required >Agree</label>
+                            </div>
+                            <input type="submit" class="btn btn-success" value="Booked" /> -->
+                          </form>
+                        
                 </div>
             </div>
         {% else %}
-        <h4 class="text-center text-danger">Login first to hire ambulance. <a href="{% url 'login' %}">Login</a></h4>
+        <h4 class="text-center text-danger"><a href="{% url 'login' %}">Login</a> first to hire ambulance. </h4>
         {% endif %}
 
         <hr>

@@ -31,6 +31,7 @@ class Ambulance(models.Model):
 class Ambulance_hire(models.Model):
     ambulance = models.ForeignKey(Ambulance, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255, null=True, blank=True)
     number = PossiblePhoneNumberField(blank=True, default="")
     location = models.CharField(max_length=255)
 

@@ -17,7 +17,7 @@ admin.site.register(Ambulance, AmbulanceAdmin)
 #custom Admin site start #
 class Ambulance_hireAdmin(admin.ModelAdmin):
   # readonly_fields = ('name','email',)
-  list_display = ('name', 'number', 'location')
+  list_display = ('name', 'number', 'email', 'location')
   list_filter = ('location',)
   search_fields = ('location', 'number', 'name')
 admin.site.register(Ambulance_hire, Ambulance_hireAdmin)
