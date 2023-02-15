@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from .models import PatientSignUp, DoctorSignUp,User
+from django.core.exceptions import ValidationError
 
 
 class PatientSignUpForm(UserCreationForm):
@@ -11,6 +12,14 @@ class PatientSignUpForm(UserCreationForm):
     email = forms.EmailField(required=True)
     class Meta(UserCreationForm.Meta):
         model = User
+        fields = ['username', 'email', 'phone', 'password1', 'password2']
+    
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("Email already exists. User another email to create an account.")
+        return email
+
         
     @transaction.atomic
     def save(self):
@@ -19,8 +28,8 @@ class PatientSignUpForm(UserCreationForm):
         user.save()
         name = self.cleaned_data['name']
         age = self.cleaned_data['age']
-        phone = self.cleaned_data['age']
-        email = self.cleaned_data['age']
+        phone = self.cleaned_data['phone']
+        email = self.cleaned_data['email']
         patients = PatientSignUp.objects.create(user=user, name=name, age=age, phone=phone, email=email)
         patients.save()
         return user

@@ -13,7 +13,7 @@ class DoctorSignUp(models.Model):
     name = models.CharField(max_length=100)
     age = models.CharField(max_length=100)
     phone = PossiblePhoneNumberField(blank=True, default="", null=True)
-    email = models.EmailField(max_length=255, null=True, blank=False)
+    email = models.EmailField(max_length=255, null=True, blank=False, unique=True)
     department = models.CharField(max_length=100)
     hospital = models.CharField(max_length=110)
     education = models.CharField(max_length=255)
@@ -30,7 +30,7 @@ class PatientSignUp(models.Model):
     name = models.CharField(max_length=100)
     age = models.CharField(max_length=100)
     phone = PossiblePhoneNumberField(blank=True, default="", null=True)
-    email = models.EmailField(max_length=255, null=True, blank=False)
+    email = models.EmailField(max_length=255, null=True, blank=False, unique=True)
 
     def __str__(self) -> str:
         return self.user.username

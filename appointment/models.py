@@ -38,6 +38,9 @@ class Patients(models.Model):
 
     def __str__(self):
         return self.email
+    
+    class Meta:
+      verbose_name = "Appointment"
 
 
 class PatientAppointmentAnswer(models.Model):
@@ -62,3 +65,6 @@ class PatientAppointmentAnswer(models.Model):
 
     def __str__(self):
         return self.patient.email
+
+    class Meta:
+      verbose_name = "Patient Appointment Answer"
