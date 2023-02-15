@@ -4,7 +4,14 @@
     <div class="col-lg-4">
       <div class="card">
         <h3 style="text-align: center;"><b> About us</b></h3>
-        <hr>
+        {% for about_us in about_us %}
+        <div class="card" style="max-height:100px;">
+          <div class="card-body">
+            <h6>{{about_us.name}}</h6>
+            <small>{{about_us.email}}</small>
+          </div>
+        </div>
+        {% endfor %}
       </div>
     </div>
 
@@ -15,6 +22,7 @@
         {% for latest_post in latest_posts %}
         <div class="card">
           <div class="card-body">
+            {{latest_post.href}}
             {{latest_post}}
           </div>
         </div>
@@ -32,6 +40,7 @@
             <li class="list-group-item"><a href="{% url 'posts' %}">All Queries</a></li>
             <li class="list-group-item"><a href="{% url 'postcreate' %}">Create query</a></li>
             <li class="list-group-item"><a href="{% url 'create_ambulance' %}">Add Ambulance</a></li>
+            <li class="list-group-item"><a href="#">Optional</a></li>
           </ul>
         </div>
         

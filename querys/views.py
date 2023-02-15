@@ -14,6 +14,8 @@ from django.db.models import Q
 def PostListView(request):
     dataset = models.Post.objects.all()
     querysetlen = models.Post.objects.filter().count()
+    answersetlen = models.AnswerPost.objects.filter().count()
+    pending_answer = querysetlen - answersetlen
     
     if request.method == 'POST':
         form = SearchForm(request.POST)
@@ -28,6 +30,9 @@ def PostListView(request):
         'dataset':dataset,
         'form':form,
         "querysetlen":querysetlen,
+        "answersetlen":answersetlen,
+        "pending_answer":pending_answer,
+
     }
     return render(request,'querys/listview.html',context)
  

@@ -17,7 +17,16 @@
 
 {% block body %}
 <div class="container">
-    <small class="m-1">total answer {{ querysetlen }}</small>
+    <small class="m-1">Total questions {{ querysetlen }}</small>
+    <small class="m-1">Total answers {{ answersetlen }}</small>
+    
+    {% if querysetlen > answersetlen %}
+        <small class="m-1">Pending answer {{ pending_answer }}</small>
+    {% else %}
+        <small class="m-1">All questions were answered. </small>
+    {% endif %}
+        
+    
     {% for data in dataset %}
 
     <div class="card m-1">

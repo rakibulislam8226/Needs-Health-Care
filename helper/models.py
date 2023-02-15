@@ -30,4 +30,9 @@ class CreateQuery(models.Model):
     return self.name + " - "+ self.department
   
 
+class AboutUs(models.Model):
+  name = models.CharField(max_length=255)
+  email = models.EmailField(max_length=255, null=True, blank=False)
 
+  def __str__(self):
+    return self.name

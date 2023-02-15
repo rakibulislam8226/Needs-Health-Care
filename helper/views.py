@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . models import Get_touch,CreateQuery
+from . models import Get_touch,CreateQuery, AboutUs
 from . forms import CreateQueryForm
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -46,10 +46,12 @@ def home(request):
         obj.save()
 
     # latest post
-    latest_posts = models.Post.objects.all()[:3]
+    latest_posts = models.Post.objects.all()[:4]
+    about_us = AboutUs.objects.all()
              
     context={
         'latest_posts':latest_posts,
+        'about_us':about_us,
     }
     return render(request, 'base/index.html', context)
 

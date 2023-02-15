@@ -19,7 +19,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <a class="navbar-brand " href="/">Needs HealthCare</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,11 +28,11 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="{% url 'postcreate' %}">Create Querys</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'posts' %}">Querys</a>
+          <a class="nav-link active" href="{% url 'posts' %}">Querys</a>
         </li>
         <li class="nav-item">
           {% if user.is_patient %}
@@ -47,8 +47,8 @@
 
       </ul>
       
-      <a href="{% url 'ambulance_list' %}" style="color: #FFFFFF"><button class="btn btn-danger">Ambulance</button></a> &nbsp;
-      <button class="btn btn-danger"><a href="{% url 'chat' %}" style="color: #FFFFFF; text-decoration:none;">Emergency</a> </button>&nbsp;
+      <a href="{% url 'ambulance_list' %}" style="color: #FFFFFF"><button class="btn btn-warning">Ambulance</button></a> &nbsp;
+      <button class="btn btn-info"><a href="{% url 'chat' %}" style="color: #FFFFFF; text-decoration:none;">Emergency</a> </button>&nbsp;
       <a href="{% url 'payment_home' %}" style="color: #ececec; text-decoration:none;"><button onclick="myFunction()" class="btn btn-success">Get Appointment </button></a>&nbsp;
       <a href="/find-doctor/patient/add/" style="color: #ececec; text-decoration:none;"><button class="btn btn-success">Find Doctors </button></a>&nbsp;
 
@@ -58,7 +58,7 @@
         <li class="nav-item dropdown">
 
           {% if user.is_authenticated %}
-          <a class="nav-link dropdown-toggle" href="#" id="profile" role="button" data-toggle="dropdown"
+          <a class="nav-link dropdown-toggle active" href="#" id="profile" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             {{user.username}}
           </a>

@@ -1,11 +1,10 @@
 from django.contrib import admin
-from . models import Get_touch,CreateQuery
-from  django.contrib.auth.models  import  Group
+from . models import Get_touch,CreateQuery, AboutUs
 
 
 
 #custom Admin site start #
-admin.site.unregister(Group)
+# admin.site.unregister(Group)
 class Get_touchAdmin(admin.ModelAdmin):
   readonly_fields = ('name','email',)
   list_display = ('name', 'email', 'subject')
@@ -28,6 +27,17 @@ class CreateQueryAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(CreateQuery, CreateQueryAdmin)
+
+#custom Admin site start #
+
+class AboutUsAdmin(admin.ModelAdmin):
+  list_display = ('name',)
+  search_fields = ('name', 'email')
+
+admin.site.register(AboutUs, AboutUsAdmin)
+#custom Admin site end #
+
+
 
 
 
