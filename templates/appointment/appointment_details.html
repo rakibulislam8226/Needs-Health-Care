@@ -12,11 +12,17 @@
 <div class="container">
     <div class="card m-2">
         <div class="m-2">
-            <h6>Name: {{data.name}}</h6> <br>
-            <h6>Email: {{data.email}}</h6> <br>
-            <h6>Phone: {{data.phone}}</h6> <br>
-            <h6>Department: {{data.department}}</h6> <br>
-            <h6>Doctor: {{data.doctor}}</h6> <br>
+            <h6>Name: {{data.name}}</h6>
+            <h6>Email: {{data.email}}</h6>
+            <h6>Phone: {{data.phone}}</h6>
+            <h6>Department: {{data.department}}</h6>
+            <h6>Doctor: {{data.doctor}}</h6>
+
+            {% if data.report %}
+            <h6>Report:</h6>
+                <p><a href="{{data.report.url}}">{{data.report}}</a>.</p>
+            {% endif %}
+            
             <h6>Description:</h6>
             <p>{{data.describe_your_problems}}</p>
         </div>

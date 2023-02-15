@@ -34,6 +34,7 @@ class Patients(models.Model):
     email = models.EmailField(max_length=255)
     phone = PossiblePhoneNumberField(blank=True, default="")
     describe_your_problems = models.TextField()
+    report = models.FileField(null=True, blank=True)
 
     def __str__(self):
         return self.email

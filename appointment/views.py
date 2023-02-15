@@ -18,7 +18,7 @@ def create_view(request):
 
   form = PatientForm(initial=default_user or None)
   if request.method == 'POST':
-    form = PatientForm(request.POST or None)
+    form = PatientForm(request.POST or None,  request.FILES)
     if form.is_valid():
       form = form.save(commit=False)
       form.user = request.user
