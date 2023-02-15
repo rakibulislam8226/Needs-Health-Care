@@ -49,7 +49,7 @@
       
       <a href="{% url 'ambulance_list' %}" style="color: #FFFFFF"><button class="btn btn-warning">Ambulance</button></a> &nbsp;
       <button class="btn btn-info"><a href="{% url 'chat' %}" style="color: #FFFFFF; text-decoration:none;">Emergency</a> </button>&nbsp;
-      <a href="{% url 'payment_home' %}" style="color: #ececec; text-decoration:none;"><button onclick="myFunction()" class="btn btn-success">Get Appointment </button></a>&nbsp;
+      <a href="/appointment/add/" style="color: #ececec; text-decoration:none;"><button onclick="myFunction()" class="btn btn-success">Get Appointment </button></a>&nbsp;
       <a href="/find-doctor/patient/add/" style="color: #ececec; text-decoration:none;"><button class="btn btn-success">Find Doctors </button></a>&nbsp;
 
 
@@ -117,7 +117,7 @@
 
   <script>
     function myFunction() {
-      alert("Hello {{request.user}}! \nYou have to pay the fees 800 taka first for appointment create.");
+      alert("Hello {{request.user}}! \nRemember you have to pay the fees 800 taka for appointment create.");
     }
   </script>
     

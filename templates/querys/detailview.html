@@ -15,38 +15,33 @@
         {% if request.user.is_doctor %}
             <div class="card">
                 <div class="m-2">
-                        <form method="post">
-                        {%csrf_token %}
-                        <h2>Answer Here</h2>
-                        {{form | crispy}}
-                        <input type="submit" class="btn btn-success" value="Answer" />
-                        </form>
+                    <form method="post">
+                    {%csrf_token %}
+                    <h2>Answer Here</h2>
+                    {{form | crispy}}
+                    <input type="submit" class="btn btn-success" value="Answer" />
+                    </form>
                 </div>
             </div>
         {% endif %}
-
         <hr>
         
         
         {% if number_of_answer %}
-        <h4 class="text-center">All the answers from doctors.</h4>
+            <h4 class="text-center">All the answers from doctors.</h4>
             <h5 style="color:rgb(150, 185, 93);" class="text">Total {{ number_of_answer }} answers.</h5>
         {% else %}
-        <h5 style="color:red;">There is no answer from doctors yet.</h5>
-            
+            <h5 style="color:red;">There is no answer from doctors yet.</h5>
         {% endif %}
             
         
-        
-        {%for answer in answers%}
-        
-        <div class="card mt-1">
-            <div class="m-2">
-                <p><strong>{{answer.name}}:</strong> {{answer.answer_text}}</p>
+        {% for answer in answers %}
+            <div class="card mt-1">
+                <div class="m-2">
+                    <p><strong>{{answer.name}}:</strong> {{answer.answer_text}}</p>
+                </div>
             </div>
-        </div>
-            
-        {%endfor %} 
+        {% endfor %} 
 
     </div>
 {% endblock body %}

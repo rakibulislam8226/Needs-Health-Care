@@ -24,13 +24,12 @@
         <br>
         
         {% if user.is_doctor or user.is_superuser %}
-        <a href="{% url 'total_appointments' %}">All appointments</a> &nbsp;
+          <a href="{% url 'total_appointments' %}">All appointments</a> &nbsp;
         {% endif %}
         
       </div>
     </div>
   </div>
-  
 </div>
 
 {% endblock body %}

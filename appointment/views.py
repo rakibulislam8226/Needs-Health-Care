@@ -24,8 +24,8 @@ def create_view(request):
       form.user = request.user
       form.save()
 
-      messages.success(request, 'Create successfully.')
-      return redirect('/appointment/my_appointments/')
+      messages.warning(request, 'Your appointment are pending for payment. Payment now for confirm your appointment.')
+      return redirect('/payment')
   return render(request, 'appointment/home.html', {'form': form})
 
 

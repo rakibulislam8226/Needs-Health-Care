@@ -3,46 +3,40 @@
 
 
 {% block head %}
-<style>
-    .card:hover{
-    background-color:rgb(226, 230, 219);
-    transition: color .5s ease-in-out, box-shadow .5s ease-in-out;
-    box-shadow: inset 140ch 0 0 0 #54b3d6;
-    
-}
+    <style>
+        .card:hover{
+        background-color:rgb(224, 255, 247);
+        transition: color .5s ease-in-out, box-shadow .5s ease-in-out;
+        box-shadow: inset 140ch 0 0 0 #C6D7DD;
+        
+    }
 </style>
     
 {% endblock head %}
     
 
 {% block body %}
-<div class="container">
-    <small class="m-1">Total questions {{ querysetlen }}</small>
-    <small class="m-1">Total answers {{ answersetlen }}</small>
-    
-    {% if querysetlen > answersetlen %}
-        <small class="m-1">Pending answer {{ pending_answer }}</small>
-    {% else %}
-        <small class="m-1">All questions were answered. </small>
-    {% endif %}
+    <div class="container">
+        <small class="m-1">Total questions {{ querysetlen }}</small>
+        <small class="m-1">Total answers {{ answersetlen }}</small>
         
-    
-    {% for data in dataset %}
-
-    <div class="card m-1">
-            <h5 class="card-header">{{data.post_title}}</h5>
-            <div class="card-body sm">
-                <!-- <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-                
-                <a href="{% url 'post' _id=data.id %}" class="btn btn-primary">Read More</a>
+        {% if querysetlen > answersetlen %}
+            <small class="m-1">Pending answer {{ pending_answer }}</small>
+        {% else %}
+            <small class="m-1">All questions were answered. </small>
+        {% endif %}
+            
+        
+        {% for data in dataset %}
+            <div class="card m-1">
+                <h5 class="card-header">{{data.post_title}}</h5>
+                <div class="card-body sm">
+                    <a href="{% url 'post' _id=data.id %}" class="btn btn-primary">Read More</a>
+                </div>
             </div>
             
-      </div>
-      <br>
-      {% endfor %}
-</div>
-
-
+            <br>
+        {% endfor %}
+    </div>
 
 {% endblock body %}

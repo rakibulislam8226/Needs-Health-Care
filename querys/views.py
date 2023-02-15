@@ -11,7 +11,7 @@ from django.views.generic import TemplateView, ListView
 from django.db.models import Q 
 
 # Create your views here.
-def PostListView(request):
+def post_list_view(request):
     dataset = models.Post.objects.all()
     querysetlen = models.Post.objects.filter().count()
     answersetlen = models.AnswerPost.objects.filter().count()
@@ -32,12 +32,11 @@ def PostListView(request):
         "querysetlen":querysetlen,
         "answersetlen":answersetlen,
         "pending_answer":pending_answer,
-
     }
     return render(request,'querys/listview.html',context)
  
 
-def PostCreateView(request):
+def post_create_view(request):
     form = PostForm(request.POST or None)
     if form.is_valid():
         form.save()
@@ -46,7 +45,7 @@ def PostCreateView(request):
     return render(request,'querys/post.html',{'form':form})
 
  
-def PostDetailView(request,_id):
+def post_details_view(request,_id):
     try:
         data = models.Post.objects.get(id =_id)
         answers = models.AnswerPost.objects.filter(post = data)

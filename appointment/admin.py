@@ -21,7 +21,7 @@ class DoctorAdmin(admin.ModelAdmin):
 @admin.register(Patients)
 class PatientsAdmin(admin.ModelAdmin):
   list_display = ('email','phone','department','doctor')
-  list_filter = ('department', 'doctor','user')
+  list_filter = ('department', 'doctor', 'user')
   readonly_fields = ('user',)
 
 # admin.site.register(PatientAppointmentAnswer)
