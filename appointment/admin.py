@@ -24,10 +24,15 @@ class PatientsAdmin(admin.ModelAdmin):
   list_filter = ('department', 'doctor', 'user')
   readonly_fields = ('user',)
 
-# admin.site.register(PatientAppointmentAnswer)
 
 
 
 @admin.register(PatientAppointmentAnswer)
 class PatientAppointmentAnswerAdmin(admin.ModelAdmin):
   list_display = ('patient','date','test')
+  readonly_fields = ('patient','date')
+  fieldsets = (
+      ('Standard info', {
+          'fields': ('patient','test', 'medicine_one', 'medicine_two','medicine_three','medicine_others','advice','medicine_eating_time','date')
+      }),
+   )

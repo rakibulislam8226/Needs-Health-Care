@@ -76,9 +76,13 @@
         <tr>
             <td><p style="font-size: 15px;"><strong>Medicine others: </strong> {{ record.medicine_others }}</p></td>
         </tr>
+        
 
       </table>
-    
+      <div class="card">
+        <p style="font-size: 15px;">Medication rules</p>
+        {{ record.medicine_eating_time }}
+      </div>
     <hr>
 
     <div class="card">
@@ -86,7 +90,6 @@
             <h1 style="font-size: 20px;">Medicale Test</h1>
             {{ record.test }}
             <hr>
-
         </div>
     </div>
 

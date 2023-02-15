@@ -34,6 +34,7 @@ class PatientAppointmentAnswerForm(forms.Form):
   medicine_two =forms.CharField(required=False)
   medicine_three =forms.CharField(required=False)
   medicine_others =forms.CharField(required=False)
+  medicine_eating_time = forms.CharField(required=False)
   advice =forms.CharField(required=False, widget=forms.Textarea(attrs={"rows":5, "cols":20, 'placeholder': 'Advice something...'}))
 
   def __str__(self):

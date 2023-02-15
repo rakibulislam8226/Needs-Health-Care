@@ -41,6 +41,7 @@ class Patients(models.Model):
     
     class Meta:
       verbose_name = "Appointment"
+      ordering = ['-id',]
 
 
 class PatientAppointmentAnswer(models.Model):

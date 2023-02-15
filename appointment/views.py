@@ -74,10 +74,11 @@ def user_appointments(request,_id):
       medicine_two=form.cleaned_data['medicine_two'],
       medicine_three=form.cleaned_data['medicine_three'],
       medicine_others=form.cleaned_data['medicine_others'],
+      medicine_eating_time=form.cleaned_data['medicine_eating_time'],
       advice=form.cleaned_data['advice'],
       patient=data)
       answers.save()
-      messages.success(request, 'successfully request for appointment.')
+      messages.success(request, 'successfully submit appointment answer.')
       return redirect(f'/appointment/user_appointments/{_id}')
   else:
       form = PatientAppointmentAnswerForm()
