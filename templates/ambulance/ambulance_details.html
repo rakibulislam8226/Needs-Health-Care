@@ -1,49 +1,62 @@
 {% extends 'base/base.html' %} 
 {% load crispy_forms_tags %} 
 
+{% block head %}
+<style>
+  .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+</style>
+
+{% endblock head %}
+  
+
 {% block body %}
 
-    <div class="container ">
-        <div class="card m-2 ">
-            <div class="m-2 ">
-                <h5>Driver name: {{data.driver_name}}</h5>
-                <h5>Driver number: {{data.driver_number}}</h5>
-                <h5>Driver email: {{data.driver_email}}</h5>
-                <h5>Location: {{data.location}}</h5> <br>
-                <h5><img src="{{data.image.url}}" alt="Ambulance image"></h5>
-            </div>
-        </div>
+  <div class="center">
+      <div class="card m-2 ">
+          <div class="m-2 ">
+              <h5>Driver name: {{data.driver_name}}</h5>
+              <h5>Driver number: {{data.driver_number}}</h5>
+              <h5>Driver email: {{data.driver_email}}</h5>
+              <h5>Location: {{data.location}}</h5> <br>
+              <h5><img src="{{data.image.url}}" alt="Ambulance image"></h5>
+          </div>
+      </div>
 
-        {% if request.user.is_authenticated %}
-            <div class="card">
-                <div class="m-2">
-                        <form method="post">
-                        {%csrf_token %}
-                        <h2>Booking Information</h2>
-                         {{form | crispy}} 
-                        <input type="submit" class="btn btn-success" value="Booked" />
-                            <!-- <div class="mb-3">
-                              <label for="exampleInputEmail1" class="form-label">Email address</label>
-                              <input type="text" name='email' class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp">
-                            </div>
-                            <div class="mb-3">
-                              <label for="exampleInputPassword1" class="form-label">Location</label>
-                              <input type="text" class="form-control" id="location" name='location' required>
-                            </div>
-                            <div class="mb-3 form-check">
-                              <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                              <label class="form-check-label" name='agree' required >Agree</label>
-                            </div>
-                            <input type="submit" class="btn btn-success" value="Booked" /> -->
-                          </form>
-                        
-                </div>
-            </div>
-        {% else %}
-        <h4 class="text-center text-danger"><a href="{% url 'login' %}">Login</a> first to hire ambulance. </h4>
-        {% endif %}
+      {% if request.user.is_authenticated %}
+          <div class="card">
+              <div class="m-2">
+                      <form method="post">
+                      {%csrf_token %}
+                      <h2>Booking Information</h2>
+                        {{form | crispy}} 
+                      <input type="submit" class="btn btn-success" value="Booked" />
+                          <!-- <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="text" name='email' class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="location" name='location' required>
+                          </div>
+                          <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                            <label class="form-check-label" name='agree' required >Agree</label>
+                          </div>
+                          <input type="submit" class="btn btn-success" value="Booked" /> -->
+                        </form>
+                      
+              </div>
+          </div>
+      {% else %}
+      <h4 class="text-center text-danger"><a href="{% url 'login' %}">Login</a> first to hire ambulance. </h4>
+      {% endif %}
 
-        <hr>
+      <hr>
 
-    </div>
+  </div>
 {% endblock body %}

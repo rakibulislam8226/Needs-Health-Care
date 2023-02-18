@@ -1,9 +1,21 @@
 {% extends "base/base.html" %}
 {% load crispy_forms_tags %}
 
+{% block head %}
+<style>
+  .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid red;
+  padding: 10px;
+}
+</style>
+
+{% endblock head %}
+
 
 {% block body %}
-<div class="container py-5">
+<div class="center py-5">
   <h1>Create a query</h1>
   <form method="POST">
     {% csrf_token %}
