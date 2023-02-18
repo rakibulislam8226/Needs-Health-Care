@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+
+{% block head %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+{% endblock head %}
+
+{% block body %}
+<div class="row justify-content-center my-4">
+    <div class="col-md-7 mt-4">
+        <div class="card">
+            <h2 class="card-header text-center">Needs HealthCare Web Assistant</h2>
+            <div class="card-body">
+             <pre>Hello, This is Needs HealthCare web assistant like chatGPT.</pre>
+              <form action="." method="POST">
+                {% csrf_token %}
+                <input class="form-control mb-2" required type="text" autofocus="autofocus" name="prompt" value="{{ prompt }}" id="">
+                <button class="btn btn-info btn-lg btn-block" type="submit">
+                     Submit
+                </button>
+              </form>
+              <hr>
+              <pre>
+                {{ formatted_response }}
+              </pre>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

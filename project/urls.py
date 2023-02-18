@@ -33,6 +33,7 @@ urlpatterns = [
     path('query/', include('querys.urls')),
     path('appointment/', include('appointment.urls')),
     path('payment/', include('payment.urls')),
+    path('openapi/', include('openapi.urls')),
     path('', include('ambulance.urls')),
     path('', include('chat.urls')),
     path('doctor_dashboard/', include('doctor_dashboard.urls')),

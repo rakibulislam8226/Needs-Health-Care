@@ -44,9 +44,10 @@
           <a class="nav-link" href="{% url 'doctor_dashboard' %}">Doctors View</a>
           {% endif %}
         </li>
+        
 
       </ul>
-      
+      <a href="/openapi/home/" style="color: #2e2a2a"><button class="btn btn-light">ChatGPT</button></a>&nbsp;
       <a href="{% url 'ambulance_list' %}" style="color: #FFFFFF"><button class="btn btn-warning">Ambulance</button></a> &nbsp;
       <button class="btn btn-info"><a href="{% url 'chat' %}" style="color: #FFFFFF; text-decoration:none;">Emergency</a> </button>&nbsp;
       <a href="/appointment/add/" style="color: #ececec; text-decoration:none;"><button onclick="myFunction()" class="btn btn-success">Get Appointment </button></a>&nbsp;
