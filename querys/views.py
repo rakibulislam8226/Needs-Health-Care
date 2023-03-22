@@ -9,6 +9,7 @@ from django.http import Http404
 from django.contrib import messages
 from django.views.generic import TemplateView, ListView
 from django.db.models import Q 
+from django.core.mail import send_mail
 
 # Create your views here.
 def post_list_view(request):
@@ -39,6 +40,13 @@ def post_list_view(request):
 def post_create_view(request):
     form = PostForm(request.POST or None)
     if form.is_valid():
+        send_mail(
+        'Appointment create',
+        'An query has beed cerated. Please visit your dashboard.',
+        'Needs Health Care',
+        ['rakibulislam8226@gmail.com'],
+        fail_silently=False,
+        )
         form.save()
         messages.success(request, 'Query create successfully.')
         return redirect("posts")

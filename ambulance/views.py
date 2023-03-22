@@ -72,7 +72,7 @@ def ambulance_detail_view(request,_id):
             send_mail(
                 f'You are hired from {answers.name}' ,
                 f'Customer contract number: {answers.number} \n Pickup location- {answers.location}.\n Thank you. Stay connected with Needs Healthcare.',
-                'settings.DEFAULT_FROM_EMAIL',
+                'Needs Health Care',
                 [data.driver_email, 'faria.nova.27@gmail.com','sadiaprapti754@gmail.com', 'rakibkhan9065@gmail.com'],
                 fail_silently=False,
             )

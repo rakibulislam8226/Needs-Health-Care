@@ -6,6 +6,7 @@ from .models import Patients, Doctor, PatientAppointmentAnswer
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -22,6 +23,13 @@ def create_view(request):
     if form.is_valid():
       form = form.save(commit=False)
       form.user = request.user
+      send_mail(
+      'Appointment create',
+      'An appointment has beed cerated. Please visit your dashboard.',
+      'Needs Health Care',
+      ['rakibulislam8226@gmail.com'],
+      fail_silently=False,
+  )
       form.save()
 
       messages.warning(request, 'Your appointment are pending for payment. Payment now for confirm your appointment.')

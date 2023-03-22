@@ -161,10 +161,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # send email from django start #
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='novafaria91@gmail.com'
-EMAIL_HOST_PASSWORD='awqiiynixzkbwzhj'
-EMAIL_PORT=587
+# EMAIL_HOST='smtp.gmail.com'
+# EMAIL_HOST_USER='novafaria91@gmail.com'
+# EMAIL_HOST_PASSWORD='awqiiynixzkbwzhj'
+# EMAIL_PORT=587
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '85904ec808022d'
+EMAIL_HOST_PASSWORD = '220eab1d780e04'
+EMAIL_PORT = '2525'
+
 EMAIL_USE_TLS=True
 DEFAULT_FROM_EMAIL = 'Needs Health Care <novafaria91@gmail.com>'
 # send email from django end  #
